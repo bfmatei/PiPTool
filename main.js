@@ -1,4 +1,4 @@
-(function () {
+window.onload = function () {
     'use strict';
 
     var videos,
@@ -16,9 +16,6 @@
         var pipButton,
             clickListener;
 
-        /** @type {String} The PiP mode status */
-        video.dataset.pipStatus = 'inline';
-
         /** @type {object} The PiP button */
         pipButton = document.createElement('button');
         pipButton.classList = 'ytp-button';
@@ -29,20 +26,17 @@
             event.preventDefault();
 
             /** Swap the PiP mode */
-            if ('inline' === video.dataset.pipStatus) {
-                video.dataset.pipStatus = 'picture-in-picture';
+            if ('inline' === video.webkitPresentationMode) {
+                video.webkitSetPresentationMode('picture-in-picture');
             } else {
-                video.dataset.pipStatus = 'inline';
+                video.webkitSetPresentationMode('inline');
             }
-
-            /** Set the presentation mode */
-            video.webkitSetPresentationMode(video.dataset.pipStatus);
         };
 
         pipButton.addEventListener('click', clickListener);
 
         /** Append the button to the controls */
-        video.closest('.html5-video-player').querySelector('.ytp-right-controls').prepend(pipButton);
+        video.closest('.html5-video-player').querySelector('.ytp-right-controls').appendChild(pipButton);
     };
 
     if (0 < videos.length && videos[0].webkitSupportsPresentationMode && 'function' === typeof videos[0].webkitSetPresentationMode) {
@@ -50,4 +44,4 @@
             addPipButton(videos[videoIterator]);
         }
     }
-}());
+};

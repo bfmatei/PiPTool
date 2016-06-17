@@ -11,12 +11,19 @@ YouTube doesn't have the default HTML5 video player, so Safari cannot add the Pi
 5. Go to Develop -> Show Extension Builder
 6. Click the "+" sign in bottom left corner
 7. Select the clonned folder from Step 1
-8. Enjoy
+8. Click install in the upper right corner
+9. Enjoy
 
 ## Improvements
-- Make it work with all the YouTube videos in a page (for multiple embedded videos on same page)
+- Suggestions?
 
 ## Changelog
+### Version 1.3
+- Make it work with all the YouTube videos in a page (for multiple embedded videos on same page)
+
+### Version 1.2
+- Simplify the code by removing unnecessary attribute
+
 ### Version 1.1
 - Changed icon with the one offered in [Material Design Icons](https://design.google.com/icons/#ic_picture_in_picture)
 

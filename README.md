@@ -14,10 +14,11 @@ YouTube doesn't have the default HTML5 video player, so Safari cannot add the Pi
 8. Enjoy
 
 ## Improvements
-- Find a new icon for the project
-- Change the base64-encrypted icon with a SVG
 - Make it work with all the YouTube videos in a page (for multiple embedded videos on same page)
 
 ## Changelog
+### Version 1.1
+- Changed icon with the one offered in [Material Design Icons](https://design.google.com/icons/#ic_picture_in_picture)
+
 ### Version 1.0
 - Initial release

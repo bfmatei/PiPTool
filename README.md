@@ -10,7 +10,7 @@ YouTube doesn't have the default HTML5 video player, so Safari cannot add the Pi
 4. Go to Develop -> Allow Unsigned Extensions
 5. Go to Develop -> Show Extension Builder
 6. Click the "+" sign in bottom left corner
-7. Select the clonned folder from Step 1
+7. Select the cloned folder from Step 1
 8. Click install in the upper right corner
 9. Enjoy
 

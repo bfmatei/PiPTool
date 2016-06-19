@@ -50,5 +50,7 @@
             <string>All</string>
         </dict>
     </dict>
+    <key>Update Manifest URL</key>
+    <string>https://bfmatei.github.io/extensions/</string>
 </dict>
 </plist>

@@ -1,0 +1,15 @@
+.ytp-button.pip-button img {
+    -webkit-transform: scale(0.7);
+    transform: scale(0.7);
+}
+
+.dmp_ControlBarButton.pip-button {
+    -webkit-transform: scale(0.7);
+    transform: scale(0.7);
+    opacity: 0.6;
+}
+
+.dmp_ControlBarButton.pip-button:hover,
+.dmp_ControlBarButton.pip-button:active {
+    opacity: 1;
+}

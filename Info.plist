@@ -9,16 +9,16 @@
 	<key>CFBundleDisplayName</key>
 	<string>PiPTool</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.bmatei.piptool</string>
+	<string>com.bmatei.safari.piptool</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.3</string>
+	<string>1.4</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>Companion Bundle Identifier</key>
 	<array>
-		<string>com.bmatei.piptool</string>
+		<string>com.bmatei.safari.piptool</string>
 	</array>
 	<key>Content</key>
 	<dict>
@@ -26,16 +26,16 @@
 		<dict>
 			<key>End</key>
 			<array>
-				<string>main.js</string>
+				<string>scripts/main.js</string>
 			</array>
 		</dict>
-		<key>Whitelist</key>
+		<key>Stylesheets</key>
 		<array>
-			<string>(.*).youtube.(.*)</string>
+			<string>stylesheets/main.css</string>
 		</array>
 	</dict>
 	<key>Description</key>
-	<string>Add the Picture-in-Picture Functionality to YouTube in macOS Sierra</string>
+	<string>Bring Picture-in-Picture functionality to video sharing platforms like YouTube</string>
 	<key>DeveloperIdentifier</key>
 	<string>0000000000</string>
 	<key>ExtensionInfoDictionaryVersion</key>

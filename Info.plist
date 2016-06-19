@@ -2,53 +2,53 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Author</key>
-	<string>Bogdan Matei</string>
-	<key>Builder Version</key>
-	<string>12602.1.32.7</string>
-	<key>CFBundleDisplayName</key>
-	<string>PiPTool</string>
-	<key>CFBundleIdentifier</key>
-	<string>com.bmatei.safari.piptool</string>
-	<key>CFBundleInfoDictionaryVersion</key>
-	<string>6.0</string>
-	<key>CFBundleShortVersionString</key>
-	<string>1.4</string>
-	<key>CFBundleVersion</key>
-	<string>1</string>
-	<key>Companion Bundle Identifier</key>
-	<array>
-		<string>com.bmatei.safari.piptool</string>
-	</array>
-	<key>Content</key>
-	<dict>
-		<key>Scripts</key>
-		<dict>
-			<key>End</key>
-			<array>
-				<string>scripts/main.js</string>
-			</array>
-		</dict>
-		<key>Stylesheets</key>
-		<array>
-			<string>stylesheets/main.css</string>
-		</array>
-	</dict>
-	<key>Description</key>
-	<string>Bring Picture-in-Picture functionality to video sharing platforms like YouTube</string>
-	<key>DeveloperIdentifier</key>
-	<string>0000000000</string>
-	<key>ExtensionInfoDictionaryVersion</key>
-	<string>1.0</string>
-	<key>Permissions</key>
-	<dict>
-		<key>Website Access</key>
-		<dict>
-			<key>Include Secure Pages</key>
-			<true/>
-			<key>Level</key>
-			<string>All</string>
-		</dict>
-	</dict>
+    <key>Author</key>
+    <string>Bogdan Matei</string>
+    <key>Builder Version</key>
+    <string>12602.1.32.7</string>
+    <key>CFBundleDisplayName</key>
+    <string>PiPTool</string>
+    <key>CFBundleIdentifier</key>
+    <string>com.bmatei.safari.piptool</string>
+    <key>CFBundleInfoDictionaryVersion</key>
+    <string>6.0</string>
+    <key>CFBundleShortVersionString</key>
+    <string>1.4</string>
+    <key>CFBundleVersion</key>
+    <string>1.4</string>
+    <key>Companion Bundle Identifier</key>
+    <array>
+        <string>com.bmatei.safari.piptool</string>
+    </array>
+    <key>Content</key>
+    <dict>
+        <key>Scripts</key>
+        <dict>
+            <key>End</key>
+            <array>
+                <string>scripts/main.js</string>
+            </array>
+        </dict>
+        <key>Stylesheets</key>
+        <array>
+            <string>stylesheets/main.css</string>
+        </array>
+    </dict>
+    <key>Description</key>
+    <string>Bring Picture-in-Picture functionality to video sharing platforms like YouTube</string>
+    <key>DeveloperIdentifier</key>
+    <string>EXZJ2ANP8U</string>
+    <key>ExtensionInfoDictionaryVersion</key>
+    <string>1.0</string>
+    <key>Permissions</key>
+    <dict>
+        <key>Website Access</key>
+        <dict>
+            <key>Include Secure Pages</key>
+            <true/>
+            <key>Level</key>
+            <string>All</string>
+        </dict>
+    </dict>
 </dict>
 </plist>

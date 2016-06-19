@@ -51,6 +51,6 @@
         </dict>
     </dict>
     <key>Update Manifest URL</key>
-    <string>https://bfmatei.github.io/extensions/</string>
+    <string>https://bfmatei.github.io/extensions/Updates.plist</string>
 </dict>
 </plist>

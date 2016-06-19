@@ -1,24 +1,25 @@
 # PiP Tool
-PiP Tool is a Safari extension built to add the Picture-in-Picture functionality to YouTube in macOS Sierra.
+PiP Tool is a Safari 10 extension built to add the Picture-in-Picture functionality to the video players that do not have it implemented.
 
-YouTube doesn't have the default HTML5 video player, so Safari cannot add the PiP button. This is where PiP Tool comes in place.
+For example, YouTube or DailyMotion don't have the default HTML5 video player, so Safari cannot add the PiP button. This is where PiP Tool comes in place.
 
 ## Installation
-1. Clone this repository
-2. Go to Safari -> Preferences -> Advanced
-3. Check the "Show Develop menu in menu bar" if not checked
-4. Go to Develop -> Allow Unsigned Extensions
-5. Go to Develop -> Show Extension Builder
-6. Click the "+" sign in bottom left corner
-7. Select "Add Extension..."
-8. Select the cloned folder from Step 1
-9. Click install in the upper right corner
-10. Enjoy
+1. Download the extension here: [https://bfmatei.github.io/extensions/PiPTool.safariextz](https://bfmatei.github.io/extensions/PiPTool.safariextz)
+2. Open the downloaded file
+3. Click trust
+4. Enjoy!
 
 ## Improvements
 - Suggestions?
 
 ## Changelog
+### Version 1.5
+- Add the possibility to auto-update the extension
+
+### Version 1.4
+- Add functionality for DailyMotion. More to come soon
+- Optimize the code
+
 ### Version 1.3
 - Make it work with all the YouTube videos in a page (for multiple embedded videos on same page)
 

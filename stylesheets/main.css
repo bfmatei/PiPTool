@@ -9,7 +9,18 @@
     opacity: 0.6;
 }
 
-.dmp_ControlBarButton.pip-button:hover,
-.dmp_ControlBarButton.pip-button:active {
+.btn-link.pip-button:hover,
+.btn-link.pip-button:active {
+    opacity: 1;
+}
+
+.btn-link.pip-button {
+    -webkit-transform: scale(0.7);
+    transform: scale(0.7);
+    opacity: 0.8;
+}
+
+.btn-link.pip-button:hover,
+.btn-link.pip-button:active {
     opacity: 1;
 }

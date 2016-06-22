@@ -10,9 +10,15 @@ For example, YouTube or DailyMotion don't have the default HTML5 video player, s
 4. Enjoy!
 
 ## Improvements
+- Plex Platform coming soon!
 - Suggestions?
 
 ## Changelog
+### Version 1.6
+- Fixed PiP button not displaying when navigating to a movie from YouTube homepage
+- Added the possibility to bind custom event to trigger the PiP button loading
+- Possible fix for the [https://github.com/bfmatei/PiPTool.safariextension/issues/3](YouTube playlists issues)
+
 ### Version 1.5
 - Add the possibility to auto-update the extension
 

@@ -14,6 +14,9 @@ For example, YouTube or DailyMotion don't have the default HTML5 video player, s
 - Suggestions?
 
 ## Changelog
+### Version 1.7
+- Fixed issue with YouTube not working on embedded videos
+
 ### Version 1.6
 - Fixed PiP button not displaying when navigating to a movie from YouTube homepage
 - Added the possibility to bind custom event to trigger the PiP button loading

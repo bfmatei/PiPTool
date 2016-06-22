@@ -148,7 +148,7 @@
                 currentResource = resource;
 
                 /** Add the event for normal pages */
-                window.addEventListener('DOMContentLoaded', findVideos, true);
+                window.addEventListener('load', findVideos, true);
 
                 /** Try to see if we have any custom handlers for this page (for instance DailyMotion). Usually these are used with SPAs (single page applications) like YouTube or Plex */
                 if (null !== currentResource.customLoadEvent && false === currentResource.customLoadEvent.loaded) {

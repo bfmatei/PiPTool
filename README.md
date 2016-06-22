@@ -10,12 +10,13 @@ For example, YouTube or DailyMotion don't have the default HTML5 video player, s
 4. Enjoy!
 
 ## Improvements
-- Plex Platform coming soon!
 - Suggestions?
 
 ## Changelog
 ### Version 1.7
+- Added initial Plex support
 - Fixed issue with YouTube not working on embedded videos
+- more to come
 
 ### Version 1.6
 - Fixed PiP button not displaying when navigating to a movie from YouTube homepage

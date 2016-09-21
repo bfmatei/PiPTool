@@ -137,8 +137,20 @@
                 videoParentClass: '.html5-video-player',
                 controlsWrapperClass: '.ytp-right-controls',
                 customClasses: null
+            },
+            {
+                name: 'netflix',
+                testPattern: /(netflix\.com|www\.netflix\.com)/,
+                customLoadEvent: null,
+                elementType: 'button',
+                videoSelector: 'video',
+                buttonClassList: 'ytp-button pip-button',
+                videoParentClass: '.player-video-wrapper',
+                controlsWrapperClass: '.player-control-bar',
+                customClasses: null
             }
         ];
+        
 
         /** @type {Object} An object keeping the current platform options */
         currentResource = null;

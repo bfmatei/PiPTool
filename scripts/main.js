@@ -7,6 +7,8 @@
         findVideos,
         plexObserver,
         plexObserverTrigger,
+        netflixObserver,
+        netflixObserverTrigger,
         initPiPTool;
 
     /**
@@ -32,6 +34,9 @@
         pipImage.src = safari.extension.baseURI + 'images/' + currentResource.name + '-icon.svg';
 
         pipButton.appendChild(pipImage);
+        
+        
+	    console.log('button added');
 
         pipButton.addEventListener('click', function (event) {
             event.preventDefault();
@@ -45,14 +50,15 @@
         });
 
         controlsWrapper = videoWrapper.querySelector(currentResource.controlsWrapperClass);
-
+            document.body.appendChild(pipButton);
         if (controlsWrapper && 0 === controlsWrapper.querySelectorAll('.pip-button').length) {
-            controlsWrapper.appendChild(pipButton);
+            document.body.appendChild(pipButton);
         }
     };
 
     /** Find the videos according to the current resource options */
     findVideos = function () {
+	    console.log('video found');
         var videoWrappers,
             videoWrapperIterator;
 
@@ -62,6 +68,36 @@
         for (videoWrapperIterator = 0; videoWrapperIterator < videoWrappers.length; videoWrapperIterator++) {
             addPipButtons(videoWrappers[videoWrapperIterator]);
         }
+    };
+
+    /** The method used to listen and trigger the event of finding the videos */
+    netflixObserver = function (mutations) {
+        mutations.forEach(function (mutation) {
+            var addedNodesIterator;
+
+            for (addedNodesIterator = 0; addedNodesIterator < mutation.addedNodes.length; addedNodesIterator++) {
+	    console.log(mutation.addedNodes[addedNodesIterator].classList);
+                if (mutation.addedNodes[addedNodesIterator].classList && mutation.addedNodes[addedNodesIterator].classList.contains(currentResource.customClasses.videoClassObserver)) {
+	        console.log('Adding!');
+                    findVideos();
+                }
+            }
+        });
+    };
+
+    /** The trigger of the Plex Observer */
+    netflixObserverTrigger = function () {
+        var observer;
+
+        /** @type {MutationObserver} Initialize an observer */
+        observer = new MutationObserver(netflixObserver);
+	        console.log('3');
+
+        /** Set the observer */
+        observer.observe(document.querySelector(currentResource.customClasses.netflixContainer), {
+			childList: true, 
+		    subtree:true
+        });
     };
 
     /** The method used to listen and trigger the event of finding the videos */
@@ -141,13 +177,22 @@
             {
                 name: 'netflix',
                 testPattern: /(netflix\.com|www\.netflix\.com)/,
-                customLoadEvent: null,
+
+                customLoadEvent: {
+                    name: 'load',
+                    method: netflixObserverTrigger,
+                    loaded: false
+                },
+
                 elementType: 'button',
-                videoSelector: 'video',
-                buttonClassList: 'ytp-button pip-button',
+                videoSelector: 'video.html-video',
+                buttonClassList: 'btn-link pip-button fred',
                 videoParentClass: '.player-video-wrapper',
-                controlsWrapperClass: '.player-control-bar',
-                customClasses: null
+                controlsWrapperClass: '.player-control-bar .no-select',
+                customClasses: {
+                    netflixContainer: '#appMountPoint',
+                    videoClassObserver: 'player-menu'
+                }
             }
         ];
         

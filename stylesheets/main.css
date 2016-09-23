@@ -24,3 +24,16 @@
 .btn-link.pip-button:active {
     opacity: 1;
 }
+
+.fred {
+		color: white;
+		background: green;
+		width: 100px;
+		height: 100px;
+		position: absolute;
+		z-index: 2;
+		top: .5em;
+		left: .5em;
+		width: 3em;
+		height: 3em;
+}

@@ -25,15 +25,23 @@
     opacity: 1;
 }
 
-.fred {
-		color: white;
-		background: green;
+.netflix-pip {
+		background: none;
 		width: 100px;
 		height: 100px;
 		position: absolute;
 		z-index: 2;
-		top: .5em;
-		left: .5em;
-		width: 3em;
-		height: 3em;
+		top: 2.5em;
+		right: 2.5em;
+		width: 4em;
+		height: 4em;
+		border-radius: 100%;
+		opacity: 0;
+		transition: all 0.5s ease-out;
+		transition-delay: 0.5s;
+		cursor: pointer;
+}
+
+body:hover > .netflix-pip {
+  opacity: 0.8;
 }

@@ -35,7 +35,6 @@
 
         pipButton.appendChild(pipImage);
         
-        a
         pipButton.addEventListener('click', function (event) {
             event.preventDefault();
 
@@ -47,11 +46,18 @@
             }
         });
 
-        controlsWrapper = videoWrapper.querySelector(currentResource.controlsWrapperClass);
-            document.body.appendChild(pipButton);
-        if (controlsWrapper && 0 === controlsWrapper.querySelectorAll('.pip-button').length) {
-            document.body.appendChild(pipButton);
+        
+
+	    controlsWrapper = videoWrapper.querySelector(currentResource.controlsWrapperClass);
+
+        if (currentResource.name == 'netflix' && document.body.querySelectorAll('.pip-button').length < 1) {
+	        document.body.appendChild(pipButton);
+        } else if (controlsWrapper && 0 === controlsWrapper.querySelectorAll('.pip-button').length) {
+            controlsWrapper.appendChild(pipButton);
         }
+        
+
+        
     };
 
     /** Find the videos according to the current resource options */
@@ -178,11 +184,10 @@
                     loaded: false
                 },
 
-                elementType: 'button',
+                elementType: 'div',
                 videoSelector: 'video',
-                buttonClassList: 'btn-link pip-button fred',
+                buttonClassList: 'netflix-pip',
                 videoParentClass: '.player-video-wrapper',
-                controlsWrapperClass: '.player-control-bar .no-select',
                 customClasses: {
                     netflixContainer: '#appMountPoint',
                     videoClassObserver: 'player-menu'
@@ -213,3 +218,5 @@
 
     initPiPTool();
 }());
+
+

@@ -35,9 +35,7 @@
 
         pipButton.appendChild(pipImage);
         
-        
-	    console.log('button added');
-
+        a
         pipButton.addEventListener('click', function (event) {
             event.preventDefault();
 
@@ -58,7 +56,6 @@
 
     /** Find the videos according to the current resource options */
     findVideos = function () {
-	    console.log('video found');
         var videoWrappers,
             videoWrapperIterator;
 
@@ -76,9 +73,7 @@
             var addedNodesIterator;
 
             for (addedNodesIterator = 0; addedNodesIterator < mutation.addedNodes.length; addedNodesIterator++) {
-	    console.log(mutation.addedNodes[addedNodesIterator].classList);
                 if (mutation.addedNodes[addedNodesIterator].classList && mutation.addedNodes[addedNodesIterator].classList.contains(currentResource.customClasses.videoClassObserver)) {
-	        console.log('Adding!');
                     findVideos();
                 }
             }
@@ -91,7 +86,6 @@
 
         /** @type {MutationObserver} Initialize an observer */
         observer = new MutationObserver(netflixObserver);
-	        console.log('3');
 
         /** Set the observer */
         observer.observe(document.querySelector(currentResource.customClasses.netflixContainer), {
@@ -185,7 +179,7 @@
                 },
 
                 elementType: 'button',
-                videoSelector: 'video.html-video',
+                videoSelector: 'video',
                 buttonClassList: 'btn-link pip-button fred',
                 videoParentClass: '.player-video-wrapper',
                 controlsWrapperClass: '.player-control-bar .no-select',
@@ -219,5 +213,3 @@
 
     initPiPTool();
 }());
-
-

@@ -30,6 +30,7 @@
         /** @type {Object} The icon shown in the PiP button */
         pipImage = document.createElement('img');
         pipImage.src = safari.extension.baseURI + 'images/' + currentResource.name + '-icon.svg';
+        pipImage.setAttribute('height', '100%');
 
         pipButton.appendChild(pipImage);
 

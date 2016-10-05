@@ -4,7 +4,7 @@ Piedc PíPer is a Safari 10 extension built to add the Picture-in-Picture functi
 For example, YouTube or DailyMotion don't have the default HTML5 video player, so Safari cannot add the PiP button. This is where PiP Tool comes in place.
 
 ## Installation
-1. Download the extension here: [https://bfmatei.github.io/extensions/PiPTool.safariextz](https://bfmatei.github.io/extensions/PiPTool.safariextz)
+1. Download the installable version above.
 2. Open the downloaded file
 3. Click trust
 4. Enjoy!

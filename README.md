@@ -1,5 +1,5 @@
-# PiP Tool
-PiP Tool is a Safari 10 extension built to add the Picture-in-Picture functionality to the video players that do not have it implemented.
+# Pied PíPer
+Piedc PíPer is a Safari 10 extension built to add the Picture-in-Picture functionality to the video players that do not have it implemented.
 
 For example, YouTube or DailyMotion don't have the default HTML5 video player, so Safari cannot add the PiP button. This is where PiP Tool comes in place.
 
@@ -13,6 +13,11 @@ For example, YouTube or DailyMotion don't have the default HTML5 video player, s
 - Suggestions?
 
 ## Changelog
+### Version 1.85 (Joe's Fork)
+- changed the name
+- Improved Netflix support
+- more to come
+
 ### Version 1.8 (Joe's Fork)
 - Added initial Netflix support
 - more to come

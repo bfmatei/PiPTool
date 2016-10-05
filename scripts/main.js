@@ -51,7 +51,8 @@
 	    controlsWrapper = videoWrapper.querySelector(currentResource.controlsWrapperClass);
 
         if (currentResource.name == 'netflix' && document.body.querySelectorAll('.pip-button').length < 1) {
-	        document.body.appendChild(pipButton);
+// 	        document.body.appendChild(pipButton);
+	        document.querySelector('.player-status').appendChild(pipButton);
         } else if (controlsWrapper && 0 === controlsWrapper.querySelectorAll('.pip-button').length) {
             controlsWrapper.appendChild(pipButton);
         }
@@ -184,7 +185,7 @@
                     loaded: false
                 },
 
-                elementType: 'div',
+                elementType: 'span',
                 videoSelector: 'video',
                 buttonClassList: 'netflix-pip',
                 videoParentClass: '.player-video-wrapper',

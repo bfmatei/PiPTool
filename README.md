@@ -1,7 +1,7 @@
 # Pied PíPer
 Piedc PíPer is a Safari 10 extension built to add the Picture-in-Picture functionality to the video players that do not have it implemented.
 
-For example, YouTube or DailyMotion don't have the default HTML5 video player, so Safari cannot add the PiP button. This is where PiP Tool comes in place.
+This will add a PiP button for Netflix, DailyMotion, Youtube, and the Plex web interface.
 
 ## Installation
 1. Download the installable version above.

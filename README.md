@@ -1,10 +1,8 @@
-# Pied PíPer
-Piedc PíPer is a Safari 10 extension built to add the Picture-in-Picture functionality to the video players that do not have it implemented.
-
-This will add a PiP button for Netflix, DailyMotion, Youtube, and the Plex web interface.
+# Pied PíPr
+Pied PíPr is a Safari 10 extension that will add a PiP button for Netflix, DailyMotion, Youtube, and the Plex web interface.
 
 ## Installation
-1. Download the installable version above.
+1. Download the extension https://joekuhns.github.io/PiedPiPer.safariextension/PiedP%C3%ADPer.safariextz.
 2. Open the downloaded file
 3. Click trust
 4. Enjoy!

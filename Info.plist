@@ -44,24 +44,23 @@
 	<dict>
   		<key>Website Access</key>
   		<dict>
- +			<key>Allowed Domains</key>
- +			<array>
- +				<string>*.youtube.com</string>
- +				<string>youtube.com</string>
- +				<string>youtu.be</string>
- +				<string>*.youtu.be</string>
- +				<string>plex.tv</string>
- +				<string>*.plex.tv</string>
- +				<string>dailymotion.com</string>
- +				<string>*.dailymotion.com</string>
- +				<string>netflix.com</string>
- +				<string>*.netflix.com</string>
- +			</array>
+ 			<key>Allowed Domains</key>
+ 			<array>
+ 				<string>*.youtube.com</string>
+ 				<string>youtube.com</string>
+ 				<string>youtu.be</string>
+ 				<string>*.youtu.be</string>
+ 				<string>plex.tv</string>
+ 				<string>*.plex.tv</string>
+ 				<string>dailymotion.com</string>
+ 				<string>*.dailymotion.com</string>
+ 				<string>netflix.com</string>
+ 				<string>*.netflix.com</string>
+ 			</array>
   			<key>Include Secure Pages</key>
   			<true/>
   			<key>Level</key>
- -			<string>All</string>
- +			<string>Some</string>
+			<string>Some</string>
   		</dict>
 	</dict>
 	<key>Update Manifest URL</key>

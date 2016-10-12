@@ -1,5 +1,5 @@
-# Pied PíPr
-Pied PíPr is a Safari 10 extension that will add a PiP button for Netflix, DailyMotion, Youtube, and the Plex web interface.
+# Pied PíPer
+Pied PíPer is a Safari 10 extension that will add a PiP button for Netflix, DailyMotion, Youtube, and the Plex web interface.
 
 ## Installation
 1. Download the extension https://joekuhns.github.io/PiedPiPer.safariextension/PiedP%C3%ADPer.safariextz.
@@ -11,6 +11,10 @@ Pied PíPr is a Safari 10 extension that will add a PiP button for Netflix, Dail
 - Suggestions?
 
 ## Changelog
+### Version 1.90 (Joe's Fork)
+- Made Uppdating work.  Now any available updates will show up in the safari extension panel.
+- Also fixed it so the plugin only fires on appropriate domains (netflix, youtube, dailymotion, plex).
+
 ### Version 1.85 (Joe's Fork)
 - changed the name
 - Improved Netflix support

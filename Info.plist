@@ -65,6 +65,6 @@
   		</dict>
 	</dict>
 	<key>Update Manifest URL</key>
-	<string>https://bfmatei.github.io/extensions/Updates.plist</string>
+	<string>https://joekuhns.github.io/PiedPiPer.safariextension/Updates.plist</string>
 </dict>
 </plist>

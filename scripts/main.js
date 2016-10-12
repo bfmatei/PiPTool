@@ -14,7 +14,7 @@
 
     /**
      * Add the PiP event and button to a given video
-     * @param {Object} videoWrapper Video element to process
+     * @param {Object} videoWrapper - Video element to process
      */
     addPipButtons = function (videoWrapper) {
         var pipButton,
@@ -27,11 +27,13 @@
 
         /** @type {Node} The PiP button */
         pipButton = document.createElement(currentResource.elementType);
+        //noinspection JSAnnotator,JSValidateTypes
         pipButton.classList = currentResource.buttonClassList;
         pipButton.title = 'PiP Mode';
 
         /** @type {Node} The icon shown in the PiP button */
         pipImage = document.createElement('img');
+        //noinspection JSUnresolvedVariable
         pipImage.src = safari.extension.baseURI + 'images/' + currentResource.name + '-icon.svg';
         pipImage.setAttribute('height', '100%');
 
@@ -41,9 +43,12 @@
             event.preventDefault();
 
             /** Swap the PiP mode */
+            //noinspection JSUnresolvedVariable
             if ('inline' === video.webkitPresentationMode) {
+                //noinspection JSUnresolvedFunction
                 video.webkitSetPresentationMode('picture-in-picture');
             } else {
+                //noinspection JSUnresolvedFunction
                 video.webkitSetPresentationMode('inline');
             }
         });

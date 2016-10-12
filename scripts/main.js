@@ -1,3 +1,4 @@
+/* globals safari: false */
 (function () {
     'use strict';
 
@@ -24,12 +25,12 @@
         /** @type {Object} The video to be switched */
         video = videoWrapper.querySelector(currentResource.videoSelector);
 
-        /** @type {Object} The PiP button */
+        /** @type {Node} The PiP button */
         pipButton = document.createElement(currentResource.elementType);
         pipButton.classList = currentResource.buttonClassList;
         pipButton.title = 'PiP Mode';
 
-        /** @type {Object} The icon shown in the PiP button */
+        /** @type {Node} The icon shown in the PiP button */
         pipImage = document.createElement('img');
         pipImage.src = safari.extension.baseURI + 'images/' + currentResource.name + '-icon.svg';
         pipImage.setAttribute('height', '100%');
@@ -47,19 +48,13 @@
             }
         });
 
-        
+        controlsWrapper = videoWrapper.querySelector(currentResource.controlsWrapperClass);
 
-	    controlsWrapper = videoWrapper.querySelector(currentResource.controlsWrapperClass);
-
-        if (currentResource.name == 'netflix' && document.body.querySelectorAll('.pip-button').length < 1) {
-// 	        document.body.appendChild(pipButton);
-	        document.querySelector('.player-status').appendChild(pipButton);
+        if ('netflix' === currentResource.name && 1 > document.body.querySelectorAll('.pip-button').length) {
+            document.querySelector('.player-status').appendChild(pipButton);
         } else if (controlsWrapper && 0 === controlsWrapper.querySelectorAll('.pip-button').length) {
             controlsWrapper.appendChild(pipButton);
         }
-        
-
-        
     };
 
     /** Find the videos according to the current resource options */
@@ -97,8 +92,13 @@
 
         /** Set the observer */
         observer.observe(document.querySelector(currentResource.customClasses.netflixContainer), {
-			childList: true, 
-		    subtree:true
+            childList: true,
+            attributes: false,
+            characterData: false,
+            subtree: true,
+            attributeOldValue: false,
+            characterDataOldValue: false,
+            attributeFilter: []
         });
     };
 
@@ -124,7 +124,13 @@
 
         /** Set the observer */
         observer.observe(document.querySelector(currentResource.customClasses.plexContainer), {
-            childList: true
+            childList: true,
+            attributes: false,
+            characterData: false,
+            subtree: false,
+            attributeOldValue: false,
+            characterDataOldValue: false,
+            attributeFilter: []
         });
     };
 

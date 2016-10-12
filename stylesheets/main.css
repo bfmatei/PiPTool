@@ -26,21 +26,20 @@
 }
 
 .netflix-pip {
-	right: 0;
-	position: absolute;
-	z-index: 999999;
-	color: white;
-	display: block;
-	top: 0;
-	user-select: auto;
-	pointer-events: auto;
-	width: 2em;
-	height: 2em;
-	top: 0.5em;
-	right: 0.5em;
-	cursor: pointer;
+    color: white;
+    display: block;
+    width: 2em;
+    height: 2em;
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+    z-index: 999999;
+    cursor: pointer;
+    user-select: auto;
+    pointer-events: auto;
+
 }
 
 body:hover > .netflix-pip {
-  opacity: 0.8;
+    opacity: 0.8;
 }

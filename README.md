@@ -1,8 +1,16 @@
-# Pied PíPer
-Pied PíPer is a Safari 10 extension that will add a PiP button for Netflix, DailyMotion, Youtube, and the Plex web interface.
+# PiP Tool
+PiP Tool is a Safari 10 extension built to add the Picture-in-Picture functionality to the video players that do not have it implemented.
+
+For example, YouTube or DailyMotion don't have the default HTML5 video player, so Safari cannot add the PiP button. This is where PiP Tool comes in place.
+
+## Supported Websites
+- YouTube
+- DailyMotion
+- Plex
+- Netflix
 
 ## Installation
-1. Download the extension https://joekuhns.github.io/PiedPiPer.safariextension/PiedP%C3%ADPer.safariextz.
+1. Download the extension from here: [https://bfmatei.github.io/extensions/PiPTool.safariextz](https://bfmatei.github.io/extensions/PiPTool.safariextz)
 2. Open the downloaded file
 3. Click trust
 4. Enjoy!
@@ -11,22 +19,11 @@ Pied PíPer is a Safari 10 extension that will add a PiP button for Netflix, Dai
 - Suggestions?
 
 ## Changelog
-### Version 1.90 (Joe's Fork)
-- Made Uppdating work.  Now any available updates will show up in the safari extension panel.
-- Also fixed it so the plugin only fires on appropriate domains (netflix, youtube, dailymotion, plex).
-
-### Version 1.85 (Joe's Fork)
-- changed the name
-- Improved Netflix support
-- more to come
-
-### Version 1.8 (Joe's Fork)
-- Added initial Netflix support
-- more to come
-
 ### Version 1.7
 - Added initial Plex support
+- Added Netflix support (many thanks to [https://github.com/JoeKuhns](Joe JoeKuhns) for his hard work)
 - Fixed issue with YouTube not working on embedded videos
+- Improved the performance by triggering the plugin only on the supported websites (thanks, again, to [https://github.com/JoeKuhns](Joe JoeKuhns))
 - more to come
 
 ### Version 1.6
@@ -52,3 +49,6 @@ Pied PíPer is a Safari 10 extension that will add a PiP button for Netflix, Dai
 
 ### Version 1.0
 - Initial release
+
+## Known Bugs
+- When leaving picture-in-picture mode the video stops

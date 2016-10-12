@@ -3,22 +3,22 @@
 <plist version="1.0">
 <dict>
 	<key>Author</key>
-	<string>Joe Kuhns (Forked from Bogdan Matei)</string>
+	<string>Bogdan Matei, Joe Kuhns</string>
 	<key>Builder Version</key>
-	<string>12602.1.32.7</string>
+	<string>12602.1.50.0.10</string>
 	<key>CFBundleDisplayName</key>
 	<string>PiPTool</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.meridianprinting.safari.PiedPiPr</string>
+	<string>com.bmatei.safari.piptool</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.9</string>
+	<string>1.7</string>
 	<key>CFBundleVersion</key>
-	<string>1.9</string>
+	<string>1.7</string>
 	<key>Companion Bundle Identifier</key>
 	<array>
-		<string>com.meridianprinting.safari.PiedPiPr</string>
+		<string>com.bmatei.safari.piptool</string>
 	</array>
 	<key>Content</key>
 	<dict>
@@ -35,35 +35,35 @@
 		</array>
 	</dict>
 	<key>Description</key>
-	<string>Adds the Missing Picture-in-Picture functionality to Youtube, Netflix, Plex (Web), dailymotion</string>
+	<string>Adds the missing Picture-in-Picture functionality to Youtube, Netflix, Plex (Web), dailymotion</string>
 	<key>DeveloperIdentifier</key>
-	<string>3AY32522EW</string>
+	<string>EXZJ2ANP8U</string>
 	<key>ExtensionInfoDictionaryVersion</key>
 	<string>1.0</string>
 	<key>Permissions</key>
 	<dict>
-  		<key>Website Access</key>
-  		<dict>
- 			<key>Allowed Domains</key>
- 			<array>
- 				<string>*.youtube.com</string>
- 				<string>youtube.com</string>
- 				<string>youtu.be</string>
- 				<string>*.youtu.be</string>
- 				<string>plex.tv</string>
- 				<string>*.plex.tv</string>
- 				<string>dailymotion.com</string>
- 				<string>*.dailymotion.com</string>
- 				<string>netflix.com</string>
- 				<string>*.netflix.com</string>
- 			</array>
-  			<key>Include Secure Pages</key>
-  			<true/>
-  			<key>Level</key>
+		<key>Website Access</key>
+		<dict>
+			<key>Allowed Domains</key>
+			<array>
+				<string>*.youtube.com</string>
+				<string>youtube.com</string>
+				<string>youtu.be</string>
+				<string>*.youtu.be</string>
+				<string>plex.tv</string>
+				<string>*.plex.tv</string>
+				<string>dailymotion.com</string>
+				<string>*.dailymotion.com</string>
+				<string>netflix.com</string>
+				<string>*.netflix.com</string>
+			</array>
+			<key>Include Secure Pages</key>
+			<true/>
+			<key>Level</key>
 			<string>Some</string>
-  		</dict>
+		</dict>
 	</dict>
 	<key>Update Manifest URL</key>
-	<string>https://joekuhns.github.io/PiedPiPer.safariextension/Updates.plist</string>
+	<string>https://bfmatei.github.io/extensions/Updates.plist</string>
 </dict>
 </plist>

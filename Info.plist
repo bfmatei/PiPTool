@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Author</key>
-	<string>Bogdan Matei</string>
+	<string>Joe Kuhns (Forked from Bogdan Matei)</string>
 	<key>Builder Version</key>
 	<string>12602.1.32.7</string>
 	<key>CFBundleDisplayName</key>
@@ -35,7 +35,7 @@
 		</array>
 	</dict>
 	<key>Description</key>
-	<string>Bring Picture-in-Picture functionality to video sharing platforms like YouTube</string>
+	<string>Adds the Missing Picture-in-Picture functionality to Youtube, Netflix, Plex (Web), dailymotion</string>
 	<key>DeveloperIdentifier</key>
 	<string>3AY32522EW</string>
 	<key>ExtensionInfoDictionaryVersion</key>

@@ -9,16 +9,16 @@
 	<key>CFBundleDisplayName</key>
 	<string>PiPTool</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.bmatei.safari.piptool</string>
+	<string>com.meridianprinting.safari.PiedPiPr</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.7</string>
+	<string>1.9</string>
 	<key>CFBundleVersion</key>
-	<string>1.7</string>
+	<string>1.9</string>
 	<key>Companion Bundle Identifier</key>
 	<array>
-		<string>com.bmatei.safari.piptool</string>
+		<string>com.meridianprinting.safari.PiedPiPr</string>
 	</array>
 	<key>Content</key>
 	<dict>

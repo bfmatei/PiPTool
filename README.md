@@ -24,6 +24,7 @@ For example, YouTube or DailyMotion don't have the default HTML5 video player, s
 - Added Netflix support (many thanks to [https://github.com/JoeKuhns](Joe JoeKuhns) for his hard work)
 - Fixed issue with YouTube not working on embedded videos
 - Improved the performance by triggering the plugin only on the supported websites (thanks, again, to [https://github.com/JoeKuhns](Joe JoeKuhns))
+- Created a more programatic way to handle the project (instructions coming soon)
 - more to come
 
 ### Version 1.6

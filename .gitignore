@@ -1,0 +1,5 @@
+.DS_Store
+.idea
+._*
+build
+node_modules

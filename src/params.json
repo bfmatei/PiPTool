@@ -1,6 +1,6 @@
 {
     "name": "PiPTool",
-    "tagline": "Adds the missing Picture-in-Picture functionality to Youtube, Netflix, Plex (Web), Dailymotion",
+    "tagline": "{{description}}",
     "body": "Download and Enjoy to enable Picture-in-Picture on Netflix, YouTube, Plex, and Dailymotion.",
     "note": "Don't delete this file! It's used internally to help with page regeneration."
 }

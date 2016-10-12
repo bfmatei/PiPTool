@@ -1,4 +1,3 @@
-/* globals safari: false */
 (function () {
     'use strict';
 
@@ -27,28 +26,28 @@
 
         /** @type {Node} The PiP button */
         pipButton = document.createElement(currentResource.elementType);
-        //noinspection JSAnnotator,JSValidateTypes
+        // noinspection JSAnnotator,JSValidateTypes
         pipButton.classList = currentResource.buttonClassList;
         pipButton.title = 'PiP Mode';
 
         /** @type {Node} The icon shown in the PiP button */
         pipImage = document.createElement('img');
-        //noinspection JSUnresolvedVariable
+        // noinspection JSUnresolvedVariable
         pipImage.src = safari.extension.baseURI + 'images/' + currentResource.name + '-icon.svg';
         pipImage.setAttribute('height', '100%');
 
         pipButton.appendChild(pipImage);
-        
+
         pipButton.addEventListener('click', function (event) {
             event.preventDefault();
 
             /** Swap the PiP mode */
-            //noinspection JSUnresolvedVariable
+            // noinspection JSUnresolvedVariable
             if ('inline' === video.webkitPresentationMode) {
-                //noinspection JSUnresolvedFunction
+                // noinspection JSUnresolvedFunction
                 video.webkitSetPresentationMode('picture-in-picture');
             } else {
-                //noinspection JSUnresolvedFunction
+                // noinspection JSUnresolvedFunction
                 video.webkitSetPresentationMode('inline');
             }
         });
@@ -75,7 +74,10 @@
         }
     };
 
-    /** The method used to listen and trigger the event of finding the videos */
+    /**
+     * The method used to listen and trigger the event of finding the videos
+     * @param {Array} mutations - Changes observed
+     */
     netflixObserver = function (mutations) {
         mutations.forEach(function (mutation) {
             var addedNodesIterator;
@@ -107,7 +109,10 @@
         });
     };
 
-    /** The method used to listen and trigger the event of finding the videos */
+    /**
+     * The method used to listen and trigger the event of finding the videos
+     * @param {Array} mutations - Mutations reported by observer
+     */
     plexObserver = function (mutations) {
         mutations.forEach(function (mutation) {
             var addedNodesIterator;
@@ -207,7 +212,6 @@
                 }
             }
         ];
-        
 
         /** @type {Object} An object keeping the current platform options */
         currentResource = null;
@@ -231,5 +235,3 @@
 
     initPiPTool();
 }());
-
-

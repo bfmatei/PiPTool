@@ -3,22 +3,22 @@
 <plist version="1.0">
 <dict>
 	<key>Author</key>
-	<string>Bogdan Matei, Joe Kuhns</string>
+	<string>{{author}}</string>
 	<key>Builder Version</key>
 	<string>12602.1.50.0.10</string>
 	<key>CFBundleDisplayName</key>
 	<string>PiPTool</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.bmatei.safari.piptool</string>
+	<string>{{packageIdentifier}}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.7</string>
+	<string>{{version}}</string>
 	<key>CFBundleVersion</key>
-	<string>1.7</string>
+	<string>{{version}}</string>
 	<key>Companion Bundle Identifier</key>
 	<array>
-		<string>com.bmatei.safari.piptool</string>
+		<string>{{packageIdentifier}}</string>
 	</array>
 	<key>Content</key>
 	<dict>
@@ -35,9 +35,9 @@
 		</array>
 	</dict>
 	<key>Description</key>
-	<string>Adds the missing Picture-in-Picture functionality to Youtube, Netflix, Plex (Web), dailymotion</string>
+	<string>{{description}}</string>
 	<key>DeveloperIdentifier</key>
-	<string>EXZJ2ANP8U</string>
+	<string>{{devKey}}</string>
 	<key>ExtensionInfoDictionaryVersion</key>
 	<string>1.0</string>
 	<key>Permissions</key>

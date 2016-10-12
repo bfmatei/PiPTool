@@ -7,6 +7,8 @@
         findVideos,
         plexObserver,
         plexObserverTrigger,
+        netflixObserver,
+        netflixObserverTrigger,
         initPiPTool;
 
     /**
@@ -33,7 +35,7 @@
         pipImage.setAttribute('height', '100%');
 
         pipButton.appendChild(pipImage);
-
+        
         pipButton.addEventListener('click', function (event) {
             event.preventDefault();
 
@@ -45,11 +47,19 @@
             }
         });
 
-        controlsWrapper = videoWrapper.querySelector(currentResource.controlsWrapperClass);
+        
 
-        if (controlsWrapper && 0 === controlsWrapper.querySelectorAll('.pip-button').length) {
+	    controlsWrapper = videoWrapper.querySelector(currentResource.controlsWrapperClass);
+
+        if (currentResource.name == 'netflix' && document.body.querySelectorAll('.pip-button').length < 1) {
+// 	        document.body.appendChild(pipButton);
+	        document.querySelector('.player-status').appendChild(pipButton);
+        } else if (controlsWrapper && 0 === controlsWrapper.querySelectorAll('.pip-button').length) {
             controlsWrapper.appendChild(pipButton);
         }
+        
+
+        
     };
 
     /** Find the videos according to the current resource options */
@@ -63,6 +73,33 @@
         for (videoWrapperIterator = 0; videoWrapperIterator < videoWrappers.length; videoWrapperIterator++) {
             addPipButtons(videoWrappers[videoWrapperIterator]);
         }
+    };
+
+    /** The method used to listen and trigger the event of finding the videos */
+    netflixObserver = function (mutations) {
+        mutations.forEach(function (mutation) {
+            var addedNodesIterator;
+
+            for (addedNodesIterator = 0; addedNodesIterator < mutation.addedNodes.length; addedNodesIterator++) {
+                if (mutation.addedNodes[addedNodesIterator].classList && mutation.addedNodes[addedNodesIterator].classList.contains(currentResource.customClasses.videoClassObserver)) {
+                    findVideos();
+                }
+            }
+        });
+    };
+
+    /** The trigger of the Plex Observer */
+    netflixObserverTrigger = function () {
+        var observer;
+
+        /** @type {MutationObserver} Initialize an observer */
+        observer = new MutationObserver(netflixObserver);
+
+        /** Set the observer */
+        observer.observe(document.querySelector(currentResource.customClasses.netflixContainer), {
+			childList: true, 
+		    subtree:true
+        });
     };
 
     /** The method used to listen and trigger the event of finding the videos */
@@ -138,8 +175,28 @@
                 videoParentClass: '.html5-video-player',
                 controlsWrapperClass: '.ytp-right-controls',
                 customClasses: null
+            },
+            {
+                name: 'netflix',
+                testPattern: /(netflix\.com|www\.netflix\.com)/,
+
+                customLoadEvent: {
+                    name: 'load',
+                    method: netflixObserverTrigger,
+                    loaded: false
+                },
+
+                elementType: 'span',
+                videoSelector: 'video',
+                buttonClassList: 'netflix-pip',
+                videoParentClass: '.player-video-wrapper',
+                customClasses: {
+                    netflixContainer: '#appMountPoint',
+                    videoClassObserver: 'player-menu'
+                }
             }
         ];
+        
 
         /** @type {Object} An object keeping the current platform options */
         currentResource = null;

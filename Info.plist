@@ -3,22 +3,22 @@
 <plist version="1.0">
 <dict>
 	<key>Author</key>
-	<string>Bogdan Matei</string>
+	<string>Joe Kuhns (Forked from Bogdan Matei)</string>
 	<key>Builder Version</key>
 	<string>12602.1.32.7</string>
 	<key>CFBundleDisplayName</key>
 	<string>PiPTool</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.bmatei.safari.piptool</string>
+	<string>com.meridianprinting.safari.PiedPiPr</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.7</string>
+	<string>1.9</string>
 	<key>CFBundleVersion</key>
-	<string>1.7</string>
+	<string>1.9</string>
 	<key>Companion Bundle Identifier</key>
 	<array>
-		<string>com.bmatei.safari.piptool</string>
+		<string>com.meridianprinting.safari.PiedPiPr</string>
 	</array>
 	<key>Content</key>
 	<dict>
@@ -35,22 +35,35 @@
 		</array>
 	</dict>
 	<key>Description</key>
-	<string>Bring Picture-in-Picture functionality to video sharing platforms like YouTube</string>
+	<string>Adds the Missing Picture-in-Picture functionality to Youtube, Netflix, Plex (Web), dailymotion</string>
 	<key>DeveloperIdentifier</key>
-	<string>EXZJ2ANP8U</string>
+	<string>3AY32522EW</string>
 	<key>ExtensionInfoDictionaryVersion</key>
 	<string>1.0</string>
 	<key>Permissions</key>
 	<dict>
-		<key>Website Access</key>
-		<dict>
-			<key>Include Secure Pages</key>
-			<true/>
-			<key>Level</key>
-			<string>All</string>
-		</dict>
+  		<key>Website Access</key>
+  		<dict>
+ 			<key>Allowed Domains</key>
+ 			<array>
+ 				<string>*.youtube.com</string>
+ 				<string>youtube.com</string>
+ 				<string>youtu.be</string>
+ 				<string>*.youtu.be</string>
+ 				<string>plex.tv</string>
+ 				<string>*.plex.tv</string>
+ 				<string>dailymotion.com</string>
+ 				<string>*.dailymotion.com</string>
+ 				<string>netflix.com</string>
+ 				<string>*.netflix.com</string>
+ 			</array>
+  			<key>Include Secure Pages</key>
+  			<true/>
+  			<key>Level</key>
+			<string>Some</string>
+  		</dict>
 	</dict>
 	<key>Update Manifest URL</key>
-	<string>https://bfmatei.github.io/extensions/Updates.plist</string>
+	<string>https://joekuhns.github.io/PiedPiPer.safariextension/Updates.plist</string>
 </dict>
 </plist>

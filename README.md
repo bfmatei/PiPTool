@@ -3,11 +3,7 @@ PiP Tool is a Safari 10 extension built to add the Picture-in-Picture functional
 
 For example, YouTube or DailyMotion don't have the default HTML5 video player, so Safari cannot add the PiP button. This is where PiP Tool comes in place.
 
-## Supported Websites
-- YouTube
-- DailyMotion
-- Plex
-- Netflix
+Additionally, the extension comes with a menu button. Just click it and then select any video from the page.
 
 ## Installation
 1. Download the extension from here: [https://bfmatei.github.io/extensions/PiPTool.safariextz](https://bfmatei.github.io/extensions/PiPTool.safariextz)
@@ -15,15 +11,28 @@ For example, YouTube or DailyMotion don't have the default HTML5 video player, s
 3. Click trust
 4. Enjoy!
 
+## Development
+1. Prerequisites: [Node.js](https://nodejs.org/en/), [Grunt](http://gruntjs.com), [JSCS](http://jscs.info) and [JSHint](http://jshint.com)
+2. Clone the repo
+3. Use "npm install" to install the needed packages
+4. If you want to develop, use "grunt live" to build and then listen for changes in the project files
+5. If you want to build the extension, use "grunt build"
+
+Note: you need to use Safari to build the ".safariextz" file. The build command above just generates the files for Safari.
+
 ## Improvements
 - Suggestions?
 
 ## Changelog
+### Version 1.8
+- Added menu button to trigger the PiP mode manually for a picked video. Just click the PiPTool button then navigate with the mouse above page elements. If the selected element is a video, then it will trigger the PiP mode.
+- Reorganized the project a little
+
 ### Version 1.7
 - Added initial Plex support
-- Added Netflix support (many thanks to [Joe JoeKuhns](https://github.com/JoeKuhns) for his hard work)
+- Added Netflix support (many thanks to [Joe Kuhns](https://github.com/JoeKuhns) for his hard work)
 - Fixed issue with YouTube not working on embedded videos
-- Improved the performance by triggering the plugin only on the supported websites (thanks, again, to [Joe JoeKuhns](https://github.com/JoeKuhns))
+- Improved the performance by triggering the plugin only on the supported websites (thanks, again, to [Joe Kuhns](https://github.com/JoeKuhns))
 - Created a more programatic way to handle the project (instructions coming soon)
 - more to come
 

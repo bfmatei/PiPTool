@@ -8,7 +8,7 @@ module.exports = function (grunt) {
 
         clean: {
             build: [
-                'build'
+                'build.safariextension'
             ]
         },
 
@@ -32,7 +32,7 @@ module.exports = function (grunt) {
                         src: [
                             'images/*'
                         ],
-                        dest: 'build/'
+                        dest: 'build.safariextension/'
                     },
 
                     {
@@ -41,7 +41,7 @@ module.exports = function (grunt) {
                         src: [
                             'Settings.plist'
                         ],
-                        dest: 'build/'
+                        dest: 'build.safariextension/'
                     }
                 ]
             }
@@ -57,7 +57,7 @@ module.exports = function (grunt) {
                             'Info.plist',
                             'params.json'
                         ],
-                        dest: 'build/'
+                        dest: 'build.safariextension/'
                     }
                 ],
                 options: {
@@ -90,7 +90,7 @@ module.exports = function (grunt) {
         uglify: {
             build: {
                 files: {
-                    'build/scripts/main.js': [
+                    'build.safariextension/scripts/main.js': [
                         'src/scripts/main.js'
                     ]
                 }
@@ -104,7 +104,7 @@ module.exports = function (grunt) {
             },
             target: {
                 files: {
-                    'build/stylesheets/main.css': [
+                    'build.safariextension/stylesheets/main.css': [
                         'src/stylesheets/main.css'
                     ]
                 }

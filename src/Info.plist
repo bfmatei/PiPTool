@@ -32,11 +32,11 @@
 				<key>Include By Default</key>
 				<true/>
 				<key>Label</key>
-				<string>PiP</string>
+				<string>PiPTool</string>
 				<key>Palette Label</key>
 				<string>PiPTool</string>
 				<key>Tool Tip</key>
-				<string>Enter PiP mode</string>
+				<string>Enter PiP Search mode</string>
 			</dict>
 		</array>
 	</dict>

@@ -43,3 +43,12 @@
 body:hover > .netflix-pip {
     opacity: 0.8;
 }
+
+.deactivate-pointer-events {
+    pointer-events: none!important;
+}
+
+.pip-hover-mode {
+    border:3px solid rgb(255, 0, 0)!important;
+    box-sizing: border-box!important;
+}

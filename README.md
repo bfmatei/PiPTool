@@ -1,5 +1,5 @@
-# PiP Tool
-PiP Tool is a Safari 10 extension built to add the Picture-in-Picture functionality to the video players that do not have it implemented.
+# PiPTool
+PiPTool is a Safari 10 extension built to add the Picture-in-Picture functionality to the video players that do not have it implemented.
 
 For example, YouTube or DailyMotion don't have the default HTML5 video player, so Safari cannot add the PiP button. This is where PiP Tool comes in place.
 

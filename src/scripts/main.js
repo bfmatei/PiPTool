@@ -1,17 +1,101 @@
 (function () {
     'use strict';
 
-    var inPipMode,
+    var inPipSearchMode,
+        lastHoveredElement,
+        pipClickEvent,
+        pipMouseMoveEvent,
+        pipKeydownEvent,
+        togglePipSearchMode,
         resources,
         currentResource,
         addPipButtons,
         findVideos,
         observer,
         observerTrigger,
-        pipClickEvent,
         netflixAppendEvent,
-        initPiPTool,
-        togglePipMode;
+        initPipTool;
+
+    /**
+     * Click event to toggle a video's PiP mode
+     * @param {MouseEvent} event - Event received
+     */
+    pipClickEvent = function (event) {
+        var element;
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        /** @type {Node} */
+        element = event.target;
+
+        // noinspection JSUnresolvedVariable
+        if (element.webkitSetPresentationMode) {
+            // noinspection JSUnresolvedVariable
+            if ('inline' === element.webkitPresentationMode) {
+                // noinspection JSUnresolvedFunction
+                element.webkitSetPresentationMode('picture-in-picture');
+            } else {
+                // noinspection JSUnresolvedFunction
+                element.webkitSetPresentationMode('inline');
+            }
+
+            togglePipSearchMode();
+        } else {
+            element.classList.add('deactivate-pointer-events');
+        }
+    };
+
+    /**
+     * Hover event to turn the red border on/off
+     * @param {MouseEvent} event - Event received
+     */
+    pipMouseMoveEvent = function (event) {
+        if (lastHoveredElement !== event.target) {
+            if (lastHoveredElement) {
+                lastHoveredElement.classList.remove('pip-hover-mode');
+            }
+
+            if (!event.target.classList.contains('pip-hover-mode')) {
+                event.target.classList.add('pip-hover-mode');
+            }
+
+            lastHoveredElement = event.target;
+        }
+    };
+
+    /**
+     * Listener for the Esc key to turn PiPTool off
+     * @param {KeyboardEvent} event - Event received
+     */
+    pipKeydownEvent = function (event) {
+        if (27 === event.keyCode) {
+            togglePipSearchMode();
+        }
+    };
+
+    /** Method to toggle the hover function of PiPTool */
+    togglePipSearchMode = function () {
+        if (!inPipSearchMode) {
+            document.addEventListener('click', pipClickEvent);
+            document.addEventListener('mousemove', pipMouseMoveEvent);
+            document.addEventListener('keydown', pipKeydownEvent);
+        } else {
+            document.removeEventListener('click', pipClickEvent);
+            document.removeEventListener('mousemove', pipMouseMoveEvent);
+            document.removeEventListener('keydown', pipKeydownEvent);
+
+            document.querySelectorAll('.deactivate-pointer-events').forEach(function (element) {
+                element.classList.remove('deactivate-pointer-events');
+            });
+
+            document.querySelectorAll('.pip-hover-mode').forEach(function (element) {
+                element.classList.remove('pip-hover-mode');
+            });
+        }
+
+        inPipSearchMode = !inPipSearchMode;
+    };
 
     /**
      * Add the PiP event and button to a given video
@@ -53,9 +137,9 @@
                 video.webkitSetPresentationMode('inline');
             }
 
-            document.removeEventListener('click', pipClickEvent);
+            inPipSearchMode = true;
 
-            inPipMode = false;
+            togglePipSearchMode();
         });
 
         if (currentResource.customAppendEvent) {
@@ -118,43 +202,6 @@
     };
 
     /**
-     * Click event to toggle a video's PiP mode
-     * @param {MouseEvent} event - Click event received
-     */
-    pipClickEvent = function (event) {
-        var element;
-
-        event.preventDefault();
-
-        element = event.target;
-
-        // noinspection JSUnresolvedVariable
-        if (element.webkitSetPresentationMode) {
-            // noinspection JSUnresolvedVariable
-            if ('inline' === element.webkitPresentationMode) {
-                // noinspection JSUnresolvedFunction
-                element.webkitSetPresentationMode('picture-in-picture');
-            } else {
-                // noinspection JSUnresolvedFunction
-                element.webkitSetPresentationMode('inline');
-            }
-
-            togglePipMode();
-        }
-    };
-
-    /** Method to toggle the hover function of PiPTool */
-    togglePipMode = function () {
-        if (!inPipMode) {
-            document.addEventListener('click', pipClickEvent);
-        } else {
-            document.removeEventListener('click', pipClickEvent);
-        }
-
-        inPipMode = !inPipMode;
-    };
-
-    /**
      * Custom append event specifically for Netflix
      * @param {Node} pipButton - PiP button built previously
      */
@@ -165,12 +212,13 @@
     };
 
     /** Method to trigger the PiP button display */
-    initPiPTool = function () {
-        inPipMode = false;
+    initPipTool = function () {
+        inPipSearchMode = false;
+        lastHoveredElement = null;
 
         // noinspection JSUnresolvedVariable
         /** Register the listener for the menu button click */
-        safari.self.addEventListener('message', togglePipMode, false);
+        safari.self.addEventListener('message', togglePipSearchMode, false);
 
         /** @type {Array} An array with every platform and the custom options for them */
         resources = [
@@ -262,5 +310,5 @@
         });
     };
 
-    initPiPTool();
+    initPipTool();
 }());

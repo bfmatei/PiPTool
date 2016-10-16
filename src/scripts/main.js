@@ -1,15 +1,17 @@
 (function () {
     'use strict';
 
-    var resources,
+    var inPipMode,
+        resources,
         currentResource,
         addPipButtons,
         findVideos,
-        plexObserver,
-        plexObserverTrigger,
-        netflixObserver,
-        netflixObserverTrigger,
-        initPiPTool;
+        observer,
+        observerTrigger,
+        pipClickEvent,
+        netflixAppendEvent,
+        initPiPTool,
+        togglePipMode;
 
     /**
      * Add the PiP event and button to a given video
@@ -50,14 +52,20 @@
                 // noinspection JSUnresolvedFunction
                 video.webkitSetPresentationMode('inline');
             }
+
+            document.removeEventListener('click', pipClickEvent);
+
+            inPipMode = false;
         });
 
-        controlsWrapper = videoWrapper.querySelector(currentResource.controlsWrapperClass);
+        if (currentResource.customAppendEvent) {
+            currentResource.customAppendEvent(pipButton);
+        } else {
+            controlsWrapper = videoWrapper.querySelector(currentResource.controlsWrapperClass);
 
-        if ('netflix' === currentResource.name && 1 > document.body.querySelectorAll('.pip-button').length) {
-            document.querySelector('.player-status').appendChild(pipButton);
-        } else if (controlsWrapper && 0 === controlsWrapper.querySelectorAll('.pip-button').length) {
-            controlsWrapper.appendChild(pipButton);
+            if (controlsWrapper && 0 === controlsWrapper.querySelectorAll('.pip-button').length) {
+                controlsWrapper.appendChild(pipButton);
+            }
         }
     };
 
@@ -75,30 +83,30 @@
     };
 
     /**
-     * The method used to listen and trigger the event of finding the videos
+     * Method used to listen and trigger the event of finding the videos
      * @param {Array} mutations - Changes observed
      */
-    netflixObserver = function (mutations) {
+    observer = function (mutations) {
         mutations.forEach(function (mutation) {
             var addedNodesIterator;
 
             for (addedNodesIterator = 0; addedNodesIterator < mutation.addedNodes.length; addedNodesIterator++) {
-                if (mutation.addedNodes[addedNodesIterator].classList && mutation.addedNodes[addedNodesIterator].classList.contains(currentResource.customClasses.videoClassObserver)) {
+                if (mutation.addedNodes[addedNodesIterator].classList && mutation.addedNodes[addedNodesIterator].classList.contains(currentResource.customClasses.observer)) {
                     findVideos();
                 }
             }
         });
     };
 
-    /** The trigger of the Plex Observer */
-    netflixObserverTrigger = function () {
-        var observer;
+    /** Create the observer */
+    observerTrigger = function () {
+        var observerInstance;
 
         /** @type {MutationObserver} Initialize an observer */
-        observer = new MutationObserver(netflixObserver);
+        observerInstance = new MutationObserver(observer);
 
         /** Set the observer */
-        observer.observe(document.querySelector(currentResource.customClasses.netflixContainer), {
+        observerInstance.observe(document.querySelector(currentResource.customClasses.container), {
             childList: true,
             attributes: false,
             characterData: false,
@@ -110,48 +118,67 @@
     };
 
     /**
-     * The method used to listen and trigger the event of finding the videos
-     * @param {Array} mutations - Mutations reported by observer
+     * Click event to toggle a video's PiP mode
+     * @param {MouseEvent} event - Click event received
      */
-    plexObserver = function (mutations) {
-        mutations.forEach(function (mutation) {
-            var addedNodesIterator;
+    pipClickEvent = function (event) {
+        var element;
 
-            for (addedNodesIterator = 0; addedNodesIterator < mutation.addedNodes.length; addedNodesIterator++) {
-                if (mutation.addedNodes[addedNodesIterator].classList && mutation.addedNodes[addedNodesIterator].classList.contains(currentResource.customClasses.videoClassObserver)) {
-                    findVideos();
-                }
+        event.preventDefault();
+
+        element = event.target;
+
+        // noinspection JSUnresolvedVariable
+        if (element.webkitSetPresentationMode) {
+            // noinspection JSUnresolvedVariable
+            if ('inline' === element.webkitPresentationMode) {
+                // noinspection JSUnresolvedFunction
+                element.webkitSetPresentationMode('picture-in-picture');
+            } else {
+                // noinspection JSUnresolvedFunction
+                element.webkitSetPresentationMode('inline');
             }
-        });
+
+            togglePipMode();
+        }
     };
 
-    /** The trigger of the Plex Observer */
-    plexObserverTrigger = function () {
-        var observer;
+    /** Method to toggle the hover function of PiPTool */
+    togglePipMode = function () {
+        if (!inPipMode) {
+            document.addEventListener('click', pipClickEvent);
+        } else {
+            document.removeEventListener('click', pipClickEvent);
+        }
 
-        /** @type {MutationObserver} Initialize an observer */
-        observer = new MutationObserver(plexObserver);
+        inPipMode = !inPipMode;
+    };
 
-        /** Set the observer */
-        observer.observe(document.querySelector(currentResource.customClasses.plexContainer), {
-            childList: true,
-            attributes: false,
-            characterData: false,
-            subtree: false,
-            attributeOldValue: false,
-            characterDataOldValue: false,
-            attributeFilter: []
-        });
+    /**
+     * Custom append event specifically for Netflix
+     * @param {Node} pipButton - PiP button built previously
+     */
+    netflixAppendEvent = function (pipButton) {
+        if (0 === document.body.querySelectorAll('.pip-button').length) {
+            document.querySelector(currentResource.customClasses.buttonDestination).appendChild(pipButton);
+        }
     };
 
     /** Method to trigger the PiP button display */
     initPiPTool = function () {
+        inPipMode = false;
+
+        // noinspection JSUnresolvedVariable
+        /** Register the listener for the menu button click */
+        safari.self.addEventListener('message', togglePipMode, false);
+
         /** @type {Array} An array with every platform and the custom options for them */
         resources = [
             {
                 name: 'dailymotion',
                 testPattern: /(dailymotion\.com|www\.dailymotion\.com)/,
                 customLoadEvent: null,
+                customAppendEvent: null,
                 elementType: 'button',
                 videoSelector: 'video#dmp_Video',
                 buttonClassList: 'dmp_ControlBarButton pip-button',
@@ -164,17 +191,18 @@
                 testPattern: /(plex\.tv|www\.plex\.tv|app\.plex\.tv)/,
                 customLoadEvent: {
                     name: 'DOMContentLoaded',
-                    method: plexObserverTrigger,
+                    method: observerTrigger,
                     loaded: false
                 },
+                customAppendEvent: null,
                 elementType: 'button',
                 videoSelector: 'video.html-video',
                 buttonClassList: 'btn-link pip-button',
                 videoParentClass: '.video-container',
                 controlsWrapperClass: '.video-controls-overlay-bottom .video-controls-right',
                 customClasses: {
-                    plexContainer: '#plex',
-                    videoClassObserver: 'video-player'
+                    container: '#plex',
+                    observer: 'video-player'
                 }
             },
             {
@@ -185,6 +213,7 @@
                     method: findVideos,
                     loaded: false
                 },
+                customAppendEvent: null,
                 elementType: 'button',
                 videoSelector: 'video.html5-main-video',
                 buttonClassList: 'ytp-button pip-button',
@@ -195,20 +224,20 @@
             {
                 name: 'netflix',
                 testPattern: /(netflix\.com|www\.netflix\.com)/,
-
                 customLoadEvent: {
                     name: 'load',
-                    method: netflixObserverTrigger,
+                    method: observerTrigger,
                     loaded: false
                 },
-
+                customAppendEvent: netflixAppendEvent,
                 elementType: 'span',
                 videoSelector: 'video',
                 buttonClassList: 'netflix-pip',
                 videoParentClass: '.player-video-wrapper',
                 customClasses: {
-                    netflixContainer: '#appMountPoint',
-                    videoClassObserver: 'player-menu'
+                    container: '#appMountPoint',
+                    observer: 'player-menu',
+                    buttonDestination: '.player-status'
                 }
             }
         ];

@@ -8,13 +8,13 @@ module.exports = function (grunt) {
 
         clean: {
             build: [
-                'build.safariextension'
+                '<%= pkg.config.buildPath %>'
             ]
         },
 
         jshint: {
             all: [
-                'src/scripts/main.js'
+                '<%= pkg.config.srcScriptsPath %>/*.js'
             ],
 
             options: {
@@ -23,25 +23,33 @@ module.exports = function (grunt) {
             }
         },
 
+        jscs: {
+            src: '<%= pkg.config.srcScriptsPath %>/*.js',
+            options: {
+                config: '.jscsrc'
+            }
+        },
+
         copy: {
             build: {
                 files: [
                     {
                         expand: true,
-                        cwd: 'src',
+                        cwd: '<%= pkg.config.srcPath %>',
                         src: [
                             'images/*'
                         ],
-                        dest: 'build.safariextension/'
+                        dest: '<%= pkg.config.buildPath %>/'
                     },
 
                     {
                         expand: true,
-                        cwd: 'src',
+                        cwd: '<%= pkg.config.srcPath %>',
                         src: [
+                            'index.html',
                             'Settings.plist'
                         ],
-                        dest: 'build.safariextension/'
+                        dest: '<%= pkg.config.buildPath %>/'
                     }
                 ]
             }
@@ -57,7 +65,7 @@ module.exports = function (grunt) {
                             'Info.plist',
                             'params.json'
                         ],
-                        dest: 'build.safariextension/'
+                        dest: '<%= pkg.config.buildPath %>'
                     }
                 ],
                 options: {
@@ -89,11 +97,14 @@ module.exports = function (grunt) {
 
         uglify: {
             build: {
-                files: {
-                    'build.safariextension/scripts/main.js': [
-                        'src/scripts/main.js'
-                    ]
-                }
+                files: [
+                    {
+                        expand: true,
+                        cwd: '<%= pkg.config.srcScriptsPath %>',
+                        src: '*.js',
+                        dest: '<%= pkg.config.buildScriptsPath %>'
+                    }
+                ]
             }
         },
 
@@ -102,12 +113,40 @@ module.exports = function (grunt) {
                 shorthandCompacting: false,
                 roundingPrecision: -1
             },
-            target: {
-                files: {
-                    'build.safariextension/stylesheets/main.css': [
-                        'src/stylesheets/main.css'
-                    ]
-                }
+
+            build: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: '<%= pkg.config.srcStylesheetsPath %>',
+                        src: '*.css',
+                        dest: '<%= pkg.config.buildStylesheetsPath %>'
+                    }
+                ]
+            }
+        },
+
+        watch: {
+            scripts: {
+                files: [
+                    '<%= pkg.config.srcScriptsPath %>/*.js'
+                ],
+
+                tasks: [
+                    'jshint',
+                    'jscs',
+                    'uglify'
+                ]
+            },
+
+            styles: {
+                files: [
+                    '<%= pkg.config.srcStylesheetsPath %>/*.css'
+                ],
+
+                tasks: [
+                    'cssmin'
+                ]
             }
         }
     });
@@ -115,9 +154,15 @@ module.exports = function (grunt) {
     grunt.registerTask('build', [
         'clean',
         'jshint',
+        'jscs',
         'copy',
         'string-replace',
         'uglify',
         'cssmin'
+    ]);
+
+    grunt.registerTask('live', [
+        'build',
+        'watch'
     ]);
 };

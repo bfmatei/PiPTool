@@ -16,6 +16,30 @@
 	<string>{{version}}</string>
 	<key>CFBundleVersion</key>
 	<string>{{version}}</string>
+	<key>Chrome</key>
+	<dict>
+		<key>Global Page</key>
+		<string>index.html</string>
+		<key>Toolbar Items</key>
+		<array>
+			<dict>
+				<key>Command</key>
+				<string>togglePipMode</string>
+				<key>Identifier</key>
+				<string>togglePipMode</string>
+				<key>Image</key>
+				<string>images/piptool-menu-icon.png</string>
+				<key>Include By Default</key>
+				<true/>
+				<key>Label</key>
+				<string>PiP</string>
+				<key>Palette Label</key>
+				<string>PiPTool</string>
+				<key>Tool Tip</key>
+				<string>Enter PiP mode</string>
+			</dict>
+		</array>
+	</dict>
 	<key>Companion Bundle Identifier</key>
 	<array>
 		<string>{{packageIdentifier}}</string>
@@ -44,23 +68,10 @@
 	<dict>
 		<key>Website Access</key>
 		<dict>
-			<key>Allowed Domains</key>
-			<array>
-				<string>*.youtube.com</string>
-				<string>youtube.com</string>
-				<string>youtu.be</string>
-				<string>*.youtu.be</string>
-				<string>plex.tv</string>
-				<string>*.plex.tv</string>
-				<string>dailymotion.com</string>
-				<string>*.dailymotion.com</string>
-				<string>netflix.com</string>
-				<string>*.netflix.com</string>
-			</array>
 			<key>Include Secure Pages</key>
 			<true/>
 			<key>Level</key>
-			<string>Some</string>
+			<string>All</string>
 		</dict>
 	</dict>
 	<key>Update Manifest URL</key>

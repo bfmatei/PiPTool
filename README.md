@@ -21,9 +21,9 @@ For example, YouTube or DailyMotion don't have the default HTML5 video player, s
 ## Changelog
 ### Version 1.7
 - Added initial Plex support
-- Added Netflix support (many thanks to [https://github.com/JoeKuhns](Joe JoeKuhns) for his hard work)
+- Added Netflix support (many thanks to [Joe JoeKuhns](https://github.com/JoeKuhns) for his hard work)
 - Fixed issue with YouTube not working on embedded videos
-- Improved the performance by triggering the plugin only on the supported websites (thanks, again, to [https://github.com/JoeKuhns](Joe JoeKuhns))
+- Improved the performance by triggering the plugin only on the supported websites (thanks, again, to [Joe JoeKuhns](https://github.com/JoeKuhns))
 - Created a more programatic way to handle the project (instructions coming soon)
 - more to come
 

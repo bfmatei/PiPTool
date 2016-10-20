@@ -24,6 +24,13 @@ Note: you need to use Safari to build the ".safariextz" file. The build command 
 - Suggestions?
 
 ## Changelog
+### Version 1.8.1
+- Changed versioning type
+- Improved Plex native support
+- Added settings for additional Plex domains. The settings are accessible via Extensions panel in Safari preferences
+- Improved picker mode by adding a red border to the current hovered element
+- Improved menu icon
+
 ### Version 1.8
 - Added menu button to trigger the PiP mode manually for a picked video. Just click the PiPTool button then navigate with the mouse above page elements. If the selected element is a video, then it will trigger the PiP mode.
 - Reorganized the project a little

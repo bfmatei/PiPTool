@@ -1,6 +1,6 @@
 {
     "name": "piptool",
-    "version": "1.8.0",
+    "version": "1.8.1",
     "description": "Adds the missing Picture-in-Picture functionality to Youtube, Netflix, Plex (Web), Dailymotion",
     "homepage": "https://github.com/bfmatei/PiPTool.safariextension",
     "license": "GPL-3.0",

@@ -24,10 +24,13 @@ Note: you need to use Safari to build the ".safariextz" file. The build command 
 - Suggestions?
 
 ## Changelog
+### Version 1.8.2
+- Fix Search mode
+
 ### Version 1.8.1
 - Changed versioning type
 - Improved Plex native support
-- Added settings for additional Plex domains. The settings are accessible via Extensions panel in Safari preferences
+- Added settings for additional Plex domains. The settings are accessible via Extensions panel in Safari preferences. You can add 1 domain like this: "test.com" or multiple domains "test1.com|test2.com|test3.com". IPs are supported too.
 - Improved picker mode by adding a red border to the current hovered element
 - Improved menu icon
 

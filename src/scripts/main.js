@@ -85,8 +85,9 @@
             document.removeEventListener('mousemove', pipMouseMoveEvent);
             document.removeEventListener('keydown', pipKeydownEvent);
 
-            document.querySelectorAll('.pip-hover-mode').forEach(function (element) {
+            document.querySelectorAll('.pip-hover-mode, .deactivate-pointer-events').forEach(function (element) {
                 element.classList.remove('pip-hover-mode');
+                element.classList.remove('deactivate-pointer-events');
             });
         }
 

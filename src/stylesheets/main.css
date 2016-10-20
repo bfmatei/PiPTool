@@ -49,6 +49,6 @@ body:hover > .netflix-pip {
     box-sizing: border-box!important;
 }
 
-.pip-hover-mode.deactivate-pointer-events {
+.deactivate-pointer-events {
     pointer-events: none!important;
 }

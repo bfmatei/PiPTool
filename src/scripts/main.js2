@@ -1,7 +1,8 @@
-(function (safari) {
+(function () {
     'use strict';
 
-    var inPipSearchMode,
+    var timeNo,
+        inPipSearchMode,
         lastHoveredElement,
         pipClickEvent,
         pipMouseMoveEvent,
@@ -15,6 +16,8 @@
         observerTrigger,
         netflixAppendEvent,
         initPipTool;
+
+    timeNo = 0;
 
     /**
      * Click event to toggle a video's PiP mode
@@ -151,46 +154,46 @@
     };
 
     /** Find the videos according to the current resource options */
-    // findVideos = function () {
-    //     var videoWrappers,
-    //         videoWrapperIterator;
-    //
-    //     /** Fetch all the video elements */
-    //     videoWrappers = document.querySelectorAll(currentResource.videoParentClass);
-    //
-    //     for (videoWrapperIterator = 0; videoWrapperIterator < videoWrappers.length; videoWrapperIterator++) {
-    //         addPipButtons(videoWrappers[videoWrapperIterator]);
-    //     }
-    // };
+    findVideos = function () {
+        var videoWrappers,
+            videoWrapperIterator;
+
+        /** Fetch all the video elements */
+        videoWrappers = document.querySelectorAll(currentResource.videoParentClass);
+
+        for (videoWrapperIterator = 0; videoWrapperIterator < videoWrappers.length; videoWrapperIterator++) {
+            addPipButtons(videoWrappers[videoWrapperIterator]);
+        }
+    };
 
     /**
      * Method used to listen and trigger the event of finding the videos
      * @param {Array} mutations - Changes observed
      */
-    // observer = function (mutations) {
-    //     mutations.forEach(function (mutation) {
-    //         var addedNodesIterator;
-    //
-    //         for (addedNodesIterator = 0; addedNodesIterator < mutation.addedNodes.length; addedNodesIterator++) {
-    //             if (mutation.addedNodes[addedNodesIterator].classList && mutation.addedNodes[addedNodesIterator].classList.contains(currentResource.customClasses.observer)) {
-    //                 findVideos();
-    //             }
-    //         }
-    //     });
-    // };
+    observer = function (mutations) {
+        mutations.forEach(function (mutation) {
+            var addedNodesIterator;
+
+            for (addedNodesIterator = 0; addedNodesIterator < mutation.addedNodes.length; addedNodesIterator++) {
+                if (mutation.addedNodes[addedNodesIterator].classList && mutation.addedNodes[addedNodesIterator].classList.contains(currentResource.customClasses.observer)) {
+                    findVideos();
+                }
+            }
+        });
+    };
 
     /** Create the observer */
-    // observerTrigger = function () {
-    //     var observerInstance;
-    //
-    //     /** @type {MutationObserver} Initialize an observer */
-    //     observerInstance = new MutationObserver(observer);
-    //
-    //     /** Set the observer */
-    //     observerInstance.observe(document.querySelector(currentResource.customClasses.container), {
-    //         childList: true
-    //     });
-    // };
+    observerTrigger = function () {
+        var observerInstance;
+
+        /** @type {MutationObserver} Initialize an observer */
+        observerInstance = new MutationObserver(observer);
+
+        /** Set the observer */
+        observerInstance.observe(document.querySelector(currentResource.customClasses.container), {
+            childList: true
+        });
+    };
 
     /**
      * Custom append event specifically for Netflix
@@ -225,6 +228,7 @@
                     {
                         name: 'dailymotion',
                         testPattern: /(dailymotion\.com|www\.dailymotion\.com)/,
+                        customLoadEvent: null,
                         customAppendEvent: null,
                         elementType: 'button',
                         videoSelector: 'video#dmp_Video',
@@ -236,6 +240,11 @@
                     {
                         name: 'plex',
                         testPattern: new RegExp('(plex.tv|www.plex.tv|app.plex.tv' + (additionalDomains ? '|' + additionalDomains : '') + ')'),
+                        customLoadEvent: {
+                            name: 'DOMContentLoaded',
+                            method: observerTrigger,
+                            loaded: false
+                        },
                         customAppendEvent: null,
                         elementType: 'button',
                         videoSelector: 'video.html-video',
@@ -250,6 +259,11 @@
                     {
                         name: 'youtube',
                         testPattern: /(youtube\.com|www\.youtube\.com|youtu\.be|www\.youtu\.be)/,
+                        customLoadEvent: {
+                            name: 'spfdone',
+                            method: findVideos,
+                            loaded: false
+                        },
                         customAppendEvent: null,
                         elementType: 'button',
                         videoSelector: 'video.html5-main-video',
@@ -261,6 +275,11 @@
                     {
                         name: 'netflix',
                         testPattern: /(netflix\.com|www\.netflix\.com)/,
+                        customLoadEvent: {
+                            name: 'load',
+                            method: observerTrigger,
+                            loaded: false
+                        },
                         customAppendEvent: netflixAppendEvent,
                         elementType: 'span',
                         videoSelector: 'video',
@@ -281,17 +300,12 @@
                         /** Add the event for normal pages */
                         window.addEventListener('load', findVideos, true);
 
-                        document.addEventListener('DOMContentLoaded', function () {
-                            var observerInstance;
+                        /** Try to see if we have any custom handlers for this page (for instance DailyMotion). Usually these are used with SPAs (single page applications) like YouTube or Plex */
+                        if (null !== currentResource.customLoadEvent && false === currentResource.customLoadEvent.loaded) {
+                            window.addEventListener(currentResource.customLoadEvent.name, currentResource.customLoadEvent.method, true);
 
-                            /** @type {MutationObserver} Initialize an observer */
-                            observerInstance = new MutationObserver(findVideos);
-
-                            /** Set the observer */
-                            observerInstance.observe(document.querySelector('body'), {
-                                childList: true
-                            });
-                        }, true);
+                            currentResource.customLoadEvent.loaded = true;
+                        }
                     }
                 });
             } else if ('enterPipMode' === message.name) {
@@ -303,7 +317,8 @@
         safari.self.tab.dispatchMessage('retrieveSettings');
     };
 
-    if (safari) {
-        initPipTool();
-    }
-})();
+    console.time('insert PiP' + timeNo);
+    initPipTool();
+    console.timeEnd('insert PiP' + timeNo);
+    timeNo += 1;
+}());

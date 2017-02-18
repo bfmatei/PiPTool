@@ -1,4 +1,22 @@
+/**
+ * @typedef {Object} PipToolEntry~Resource
+ * @property {String} name
+ * @property {String} domains
+ * @property {String} elementType
+ * @property {String} videoSelector
+ * @property {String} buttonClassList
+ * @property {String} videoParentClass
+ * @property {String} controlsWrapperClass
+ */
+
+/**
+ * @typedef {Object} PipToolEntry~Params
+ * @property {String} buttonTitle
+ * @property {String} buttonTitle
+ * @property {PipToolEntry~Resource[]} resources
+ */
 export default {
+  buttonTitle: 'PiPTool',
   buttonClass: '.pip-button',
   resources: [
     {

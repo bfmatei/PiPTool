@@ -81,7 +81,7 @@ class ResourcesWebpackPlugin {
       /** Convert data to string */
       data = data.toString();
 
-      if (0 < Object.keys(replaceValues).length) { // eslint-disable-line
+      if (0 < Object.keys(replaceValues).length) {
         /** Replace content */
         data = data.replace(/\{\{(.*)}}/g, ResourcesWebpackPlugin.replaceValuesCaller.bind(replaceValues));
       }
@@ -120,9 +120,13 @@ class ResourcesWebpackPlugin {
  * @param {Object} compiler - Webpack compiler instance
  */
 ResourcesWebpackPlugin.prototype.apply = function (compiler) {
-  compiler.plugin('emit', () => {
+  compiler.plugin('emit', (compilation, callback) => {
     /** Parse each entry */
     this.entries.forEach(ResourcesWebpackPlugin.readEntry);
+
+    if (callback) {
+      callback();
+    }
   });
 };
 

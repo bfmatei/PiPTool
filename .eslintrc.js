@@ -1,4 +1,3 @@
-/* eslint 'no-magic-numbers': 'off' */
 /* eslint-env node */
 
 module.exports = {
@@ -244,15 +243,7 @@ module.exports = {
     ],
     'no-lone-blocks': 'error',
     'no-loop-func': 'error',
-    'no-magic-numbers': [
-      'error',
-      {
-        ignore: [],
-        ignoreArrayIndexes: true,
-        enforceConst: true,
-        detectObjects: true
-      }
-    ],
+    'no-magic-numbers': 'off',
     'no-multi-spaces': [
       'error',
       {
@@ -424,13 +415,7 @@ module.exports = {
       }
     ],
     'block-spacing': 'off',
-    'brace-style': [
-      'error',
-      'stroustrup',
-      {
-        allowSingleLine: false
-      }
-    ],
+    'brace-style': 'off',
     camelcase: [
       'error',
       {
@@ -677,7 +662,10 @@ module.exports = {
     'no-whitespace-before-property': 'error',
     'object-curly-newline': [
       'error',
-      'always'
+      {
+        multiline: true,
+        minProperties: 1
+      }
     ],
     'object-curly-spacing': 'error',
     'object-property-newline': [

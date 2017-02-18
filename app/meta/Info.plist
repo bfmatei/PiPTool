@@ -19,24 +19,24 @@
 	<key>Chrome</key>
 	<dict>
 		<key>Global Page</key>
-		<string>index.html</string>
+		<string>{{globalPageName}}</string>
 		<key>Toolbar Items</key>
 		<array>
 			<dict>
 				<key>Command</key>
-				<string>togglePipMode</string>
+				<string>{{targetModeCommand}}</string>
 				<key>Identifier</key>
-				<string>togglePipMode</string>
+				<string>{{targetModeIdentifier}}</string>
 				<key>Image</key>
-				<string>images/piptool-menu-icon.png</string>
+				<string>{{targetModeImagePath}}</string>
 				<key>Include By Default</key>
 				<true/>
 				<key>Label</key>
-				<string>PiPTool</string>
+				<string>{{targetModeLabel}}</string>
 				<key>Palette Label</key>
-				<string>PiPTool</string>
+				<string>{{targetModePaletteLabel}}</string>
 				<key>Tool Tip</key>
-				<string>Enter PiP Search mode</string>
+				<string>{{targetModeTooltip}}</string>
 			</dict>
 		</array>
 	</dict>
@@ -50,12 +50,12 @@
 		<dict>
 			<key>Start</key>
 			<array>
-				<string>scripts/main.js</string>
+				<string>{{entryScriptPath}}</string>
 			</array>
 		</dict>
 		<key>Stylesheets</key>
 		<array>
-			<string>stylesheets/main.css</string>
+			<string>{{entryStylesPath}}</string>
 		</array>
 	</dict>
 	<key>Description</key>

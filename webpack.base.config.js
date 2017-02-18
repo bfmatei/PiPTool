@@ -6,18 +6,30 @@ const packageFile = require('./package.json');
 const packageConfig = packageFile.pipToolConfig;
 
 const {
-  appFileName,
   appFolderName,
   buildFileName,
   buildFolderName,
+  entryFileName,
+  entryDestFileName,
+  globalDestFileName,
+  globalFileName,
+  globalPageName,
   imagesFolderName,
   metaFolderName,
-  stylesFolderName
+  stylesFileName,
+  stylesFolderName,
+  targetModeCommand,
+  targetModeIdentifier,
+  targetModeImage,
+  targetModeLabel,
+  targetModePaletteLabel,
+  targetModeTooltip
 } = packageConfig;
 
 const appPath = path.resolve(__dirname, `./${appFolderName}`);
 const buildPath = path.resolve(__dirname, `./${buildFolderName}`);
-const entryPath = path.resolve(appPath, `./${appFileName}`);
+const entryPath = path.resolve(appPath, `./${entryFileName}`);
+const globalPath = path.resolve(appPath, `./${globalFileName}`);
 const imagesPath = path.resolve(appPath, `./${imagesFolderName}`);
 const imagesDestPath = path.resolve(buildPath, `./${imagesFolderName}`);
 const metaPath = path.resolve(appPath, `./${metaFolderName}`);
@@ -39,7 +51,9 @@ const loaderOptions = new webpack.LoaderOptionsPlugin({
 });
 
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const cleanBuildFolder = new CleanWebpackPlugin([buildFolderName], {
+const cleanBuildFolder = new CleanWebpackPlugin([
+  buildFolderName
+], {
   root: __dirname,
   verbose: false,
   dry: false
@@ -47,13 +61,27 @@ const cleanBuildFolder = new CleanWebpackPlugin([buildFolderName], {
 
 const ResourcesWebpackPlugin = require('./webpack.resources.plugin');
 
+const replaceIndexValues = {
+  globalDestFileName
+};
+
 const replaceMetaValues = {
   author: packageFile.author.name,
-  packageIdentifier: packageConfig.packageIdentifier,
-  version: packageFile.version,
   description: packageFile.description,
   devKey: packageConfig.devKey,
-  updateUrl: packageConfig.updateUrl
+  entryScriptPath: entryDestFileName,
+  entryStylesPath: `${stylesFolderName}/${stylesFileName}`,
+  globalPageName,
+  globalScriptPath: globalDestFileName,
+  packageIdentifier: packageConfig.packageIdentifier,
+  targetModeCommand,
+  targetModeIdentifier,
+  targetModeImagePath: `${imagesFolderName}/${targetModeImage}`,
+  targetModeLabel,
+  targetModePaletteLabel,
+  targetModeTooltip,
+  updateUrl: packageConfig.updateUrl,
+  version: packageFile.version
 };
 
 const copyResources = new ResourcesWebpackPlugin([
@@ -82,17 +110,24 @@ const copyResources = new ResourcesWebpackPlugin([
   {
     path: appPath,
     filePattern: /index\.html/,
-    dest: buildPath
+    dest: buildPath,
+    replaceValues: replaceIndexValues
   }
 ]);
 
+const entry = {};
+
+entry[entryDestFileName] = entryPath;
+entry[globalDestFileName] = globalPath;
+
 module.exports = new webpackConfig.Config()
   .merge({
-    entry: entryPath,
+    entry,
     output: {
       path: buildPath,
-      filename: buildFileName
+      filename: '[name]'
     },
+    devtool: 'source-map',
     context: __dirname,
     resolve: {
       extensions: [

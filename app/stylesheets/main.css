@@ -26,7 +26,7 @@
 }
 
 .netflix-pip {
-    color: white;
+    color: #ffffff;
     display: block;
     width: 2em;
     height: 2em;
@@ -35,7 +35,7 @@
     right: 0.5em;
     z-index: 999999;
     cursor: pointer;
-    user-select: auto;
+    user-select: initial;
     pointer-events: auto;
 
 }
@@ -45,7 +45,7 @@ body:hover > .netflix-pip {
 }
 
 .pip-hover-mode {
-    border:3px solid rgb(255, 0, 0)!important;
+    border:3px solid #ff0000 !important;
     box-sizing: border-box!important;
 }
 

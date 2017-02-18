@@ -1,53 +1,51 @@
 {
-    "name": "piptool",
-    "version": "1.8.2",
-    "description": "Adds the missing Picture-in-Picture functionality to Youtube, Netflix, Plex (Web), Dailymotion",
-    "homepage": "https://github.com/bfmatei/PiPTool.safariextension",
-    "license": "GPL-3.0",
-    "contributors": [
-        {
-            "name": "Bogdan Matei",
-            "email": "contact@bmatei.com",
-            "homepage": "https://github.com/bfmatei"
-        },
-        {
-            "name": "Joe Kuhns",
-            "email": "joe@after-paper.com",
-            "homepage": "https://github.com/JoeKuhns"
-        }
-    ],
-    "repository": {
-        "type" : "git",
-        "url" : "https://github.com/bfmatei/PiPTool.safariextension.git"
-    },
-    "config": {
-        "srcPath": "src",
-        "srcScriptsPath": "src/scripts",
-        "srcStylesheetsPath": "src/stylesheets",
-        "buildPath": "build.safariextension",
-        "buildScriptsPath": "build.safariextension/scripts",
-        "buildStylesheetsPath": "build.safariextension/stylesheets",
-        "packageIdentifier": "com.bmatei.safari.piptool",
-        "devKey": "EXZJ2ANP8U"
-    },
-    "scripts": {
-        "start": "grunt build"
-    },
-    "devDependencies": {
-        "grunt": "1.0.1",
-        "grunt-contrib-clean": "1.0.0",
-        "grunt-contrib-copy": "1.0.0",
-        "grunt-contrib-cssmin": "1.0.2",
-        "grunt-contrib-jshint": "1.0.0",
-        "grunt-contrib-uglify": "2.0.0",
-        "grunt-contrib-watch": "1.0.0",
-        "grunt-string-replace": "1.3.1",
-        "grunt-jscs": "3.0.1",
-        "jshint-stylish": "2.2.1"
-    },
-    "engines": {
-        "node": "6.7.0",
-        "jscs": "3.0.7",
-        "jshint": "2.9.3"
-    }
+  "name": "piptool",
+  "version": "1.8.2",
+  "description": "Adds the missing Picture-in-Picture functionality to Youtube, Netflix, Plex (Web), Dailymotion",
+  "main": "index.js",
+  "pipToolConfig": {
+    "appFileName": "app.js",
+    "appFolderName": "app",
+    "buildFileName": "app.bundle.js",
+    "buildFolderName": "build.safariextension",
+    "devKey": "EXZJ2ANP8U",
+    "imagesFolderName": "images",
+    "metaFolderName": "meta",
+    "packageIdentifier": "com.bmatei.safari.piptool",
+    "runPort": 9000,
+    "stylesFolderName": "stylesheets",
+    "updateUrl": "https://bfmatei.github.io/extensions/Updates.plist",
+    "webpackBaseFile": "webpack.base.config.js"
+  },
+  "scripts": {
+    "build": "webpack --config webpack.build.config.js",
+    "run": "webpack --config webpack.run.config.js"
+  },
+  "homepage": "https://github.com/bfmatei/PiPTool.safariextension",
+  "license": "GPL-3.0",
+  "author": {
+    "name": "Bogdan Matei",
+    "email": "contact@bmatei.com",
+    "homepage": "https://github.com/bfmatei"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bfmatei/PiPTool.safariextension.git"
+  },
+  "devDependencies": {
+    "babel-core": "^6.23.1",
+    "babel-eslint": "^7.1.1",
+    "babel-loader": "^6.3.2",
+    "babel-preset-es2015": "^6.22.0",
+    "clean-webpack-plugin": "^0.1.15",
+    "copy-webpack-plugin": "^4.0.1",
+    "eslint": "^3.15.0",
+    "eslint-loader": "^1.6.1",
+    "eslint-plugin-babel": "^4.0.1",
+    "eslint-plugin-json": "^1.2.0",
+    "fs-extra": "^2.0.0",
+    "webpack": "^2.2.1",
+    "webpack-config": "^7.0.0",
+    "webpack-dev-server": "^2.3.0"
+  }
 }

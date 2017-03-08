@@ -28,7 +28,7 @@
 				<key>Identifier</key>
 				<string>togglePipMode</string>
 				<key>Image</key>
-				<string>images/piptool-menu-icon.png</string>
+				<string>images/piptool-menu-icon-64.png</string>
 				<key>Include By Default</key>
 				<true/>
 				<key>Label</key>

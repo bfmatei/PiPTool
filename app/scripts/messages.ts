@@ -1,0 +1,5 @@
+export class Messages {
+  public static ENTER_PIP_MODE = "ENTER_PIP_MODE";
+  public static RETRIEVE_SETTINGS = "RETRIEVE_SETTINGS";
+  public static RETRIEVE_SETTINGS_RESPONSE = "RETRIEVE_SETTINGS_RESPONSE";
+}

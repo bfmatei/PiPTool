@@ -11,5 +11,5 @@ module.exports = new webpackConfig.Config()
   .extend(webpackBaseFile)
   .merge({
     watch: true,
-    devtool: 'eval-source-map'
+    // devtool: 'eval-source-map'
   });

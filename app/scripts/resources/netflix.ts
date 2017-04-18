@@ -1,0 +1,13 @@
+import { InsertTypes } from "../insertTypes.enum";
+
+export const Netflix = {
+  resourceName: "netflix",
+  domains: "netflix.com|www.netflix.com",
+  elementType: "div",
+  videoSelector: "video",
+  buttonClassList: "netflix-pip",
+  videoParentSelector: "#netflix-player",
+  controlsWrapperSelector: ".player-control-bar",
+  insertType: InsertTypes.APPEND,
+  insertTarget: ".player-fill-screen"
+}

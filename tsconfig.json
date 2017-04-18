@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+//    "module": "none",
+    "moduleResolution": "classic",
+    "removeComments": true,
+    "importHelpers": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "rootDir": ".",
+    "outDir": "build",
+    "sourceMap": false,
+    "baseUrl": ".",
+    "paths": {
+      "tslib" : [
+        "node_modules/tslib/tslib.d.ts"
+      ]
+    }
+  },
+  "include": [
+    "app/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

@@ -8,21 +8,21 @@ const {
   webpackBaseFile
 } = config;
 
-const uglifyPlugin = new webpack.optimize.UglifyJsPlugin({
-  minimize: true,
-  output: {
-    comments: false
-  },
-  compress: {
-    warnings: false
-  }
-});
+// const uglifyPlugin = new webpack.optimize.UglifyJsPlugin({
+//   minimize: true,
+//   output: {
+//     comments: false
+//   },
+//   compress: {
+//     warnings: false
+//   }
+// });
 
 module.exports = new webpackConfig.Config()
   .extend(webpackBaseFile)
   .merge({
-    devtool: 'source-map',
+    // devtool: 'source-map',
     plugins: [
-      uglifyPlugin
+      // uglifyPlugin
     ]
   });

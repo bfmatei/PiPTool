@@ -1,0 +1,13 @@
+{
+  "extends": "tslint:recommended",
+  "rules": {
+    "no-console": false,
+    "trailing-comma": false,
+    "no-angle-bracket-type-assertion": false,
+    "member-ordering": false,
+    "semicolon": false,
+    "ordered-imports": false,
+    "object-literal-sort-keys": false,
+    "no-namespace": false
+  }
+}

@@ -127,11 +127,11 @@ module.exports = new webpackConfig.Config()
       path: buildPath,
       filename: '[name]'
     },
-    devtool: 'source-map',
+    // devtool: 'source-map',
     context: __dirname,
     resolve: {
       extensions: [
-        '.js',
+        '.ts',
         '.json'
       ],
       modules: [
@@ -141,19 +141,19 @@ module.exports = new webpackConfig.Config()
     module: {
       loaders: [
         {
-          test: /\.js$/,
+          test: /\.ts$/,
           exclude: [
             nodeModulesPath
           ],
           use: [
             {
-              loader: 'babel-loader',
-              options: {
-                cacheDirectory: true
-              }
+              loader: 'ts-loader'
             },
             {
-              loader: 'eslint-loader'
+              loader: 'tslint-loader',
+              options: {
+                enforce: 'pre'
+              }
             }
           ]
         }

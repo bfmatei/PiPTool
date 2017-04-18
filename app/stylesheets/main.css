@@ -40,6 +40,17 @@
 
 }
 
+.twitch-pip {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 40px;
+    background: none!important;
+}
+
+.twitch-pip:hover img {
+    fill: red;
+}
+
 body:hover > .netflix-pip {
     opacity: 0.8;
 }

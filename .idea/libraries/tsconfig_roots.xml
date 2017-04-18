@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="tsconfig$roots" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/node_modules/tslib/tslib.d.ts" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/node_modules/tslib/tslib.d.ts" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>

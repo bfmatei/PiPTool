@@ -78,10 +78,10 @@ class ResourcesWebpackPlugin {
         throw new Error(readError);
       }
 
-      /** Convert data to string */
-      data = data.toString();
-
       if (0 < Object.keys(replaceValues).length) {
+        /** Convert data to string */
+        data = data.toString();
+
         /** Replace content */
         data = data.replace(/\{\{(.*)}}/g, ResourcesWebpackPlugin.replaceValuesCaller.bind(replaceValues));
       }

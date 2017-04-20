@@ -21,7 +21,8 @@ Additionally, the extension comes with a menu button. Just click it and then sel
 Note: you need to use Safari to build the ".safariextz" file. The build command above just generates the files for Safari.
 
 ## Improvements
-- Suggestions?
+- Add resources dynamic from a public list like content blockers do
+- Add a configuration page for easier configuration
 
 ## Changelog
 ### Version 2.0.0

@@ -34,6 +34,8 @@ Note: you need to use Safari to build the ".safariextz" file. The build command 
 - Much easier way to add a new resource
 - The mechanism behind can now detect way more websites. Just ask for something and i will add support for it.
 - The new mechanism allows button placement in specific place easier now.
+- New mechanism for "target mode". Just click it and drag your mouse across the screen. No need for buggy clicks now. When you hold the mouse over a video, a red border will appear around it.
+- Added context menu item. Just go to extension settings and check "Enable Context Menu"
 - New image for toolbar. Thanks to [David Hariri](https://github.com/davidhariri)
 - Added support for Twitch.tv and Amazon Videos
 - Button placed before fullscreen button for YouTube and Twitch

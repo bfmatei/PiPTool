@@ -21,9 +21,6 @@ export class Entry extends Base {
   /** Flag for target mode */
   private targetModeActive = false;
 
-  /** Last targeted element in target mode */
-  private lastTargetedElement = null;
-
   /** Flag for context menu */
   private enableContextMenu = false;
 
@@ -163,15 +160,19 @@ export class Entry extends Base {
       this.document.removeEventListener("mousemove", this.bindedTargetModeMouseMoveEvent);
       this.document.removeEventListener("keydown", this.bindedTargetModeKeydownEvent);
 
-      const elements = this.document.querySelectorAll(".pip-hover-mode, .deactivate-pointer-events");
-
-      for (let index = 0; index < elements.length; index++) {
-        elements.item(index).classList.remove("pip-hover-mode");
-        elements.item(index).classList.remove("deactivate-pointer-events");
-      }
+      this.enableDeactivatedElements();
     }
 
     this.targetModeActive = !this.targetModeActive;
+  }
+
+  private enableDeactivatedElements(): void {
+    const elements = this.document.querySelectorAll(".pip-hover-mode, .deactivate-pointer-events");
+
+    for (let index = 0; index < elements.length; index++) {
+      elements.item(index).classList.remove("pip-hover-mode");
+      elements.item(index).classList.remove("deactivate-pointer-events");
+    }
   }
 
   /** Wrapper to change the context of targetModeClickHandler */
@@ -196,8 +197,6 @@ export class Entry extends Base {
       }
 
       this.toggleTargetMode();
-    } else {
-      element.classList.add("deactivate-pointer-events");
     }
   }
 
@@ -208,19 +207,22 @@ export class Entry extends Base {
 
   /** Handler for mouse move event when target mode is active */
   private targetModeMouseMoveEvent(event: MouseEvent): void {
-    if (this.lastTargetedElement !== event.target) {
-      if (this.lastTargetedElement) {
-        this.lastTargetedElement.classList.remove("pip-hover-mode");
+    let el;
+    let stopIteration = false;
+
+    this.enableDeactivatedElements();
+
+    do {
+      el = this.document.elementFromPoint(event.clientX, event.clientY);
+
+      if ("video" === el.tagName.toLowerCase()) {
+        stopIteration = true;
+
+        el.classList.add("pip-hover-mode");
+      } else {
+        el.classList.add("deactivate-pointer-events");
       }
-
-      const element = event.target as Element;
-
-      if (!element.classList.contains("pip-hover-mode")) {
-        element.classList.add("pip-hover-mode");
-      }
-
-      this.lastTargetedElement = event.target;
-    }
+    } while ("body" !== el.tagName.toLowerCase() && !stopIteration);
   }
 
   /** Wrapper to change the context of targetModeKeydownEvent */

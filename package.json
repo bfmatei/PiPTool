@@ -21,7 +21,7 @@
     "stylesFolderName": "stylesheets",
     "targetModeCommand": "toggleTargetMode",
     "targetModeIdentifier": "toggleTargetMode",
-    "targetModeImage": "piptool-menu-icon.png",
+    "targetModeImage": "piptool-menu-icon-64.png",
     "targetModeLabel": "PiPTool",
     "targetModePaletteLabel": "PiPTool",
     "targetModeTooltip": "Enter PiPTool Target Mode",

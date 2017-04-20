@@ -28,10 +28,10 @@
 .netflix-pip {
     color: #ffffff;
     display: block;
-    width: 2em;
-    height: 2em;
+    width: 4em;
+    height: 4em;
     position: absolute;
-    top: 0.5em;
+    top: 1.5em;
     right: 0.5em;
     z-index: 999999;
     cursor: pointer;

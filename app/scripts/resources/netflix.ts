@@ -7,7 +7,7 @@ export const Netflix = {
   videoSelector: "video",
   buttonClassList: "netflix-pip",
   videoParentSelector: "#netflix-player",
-  controlsWrapperSelector: ".player-control-bar",
+  controlsWrapperSelector: ".player-status",
   insertType: InsertTypes.APPEND,
   insertTarget: ".player-fill-screen"
 }

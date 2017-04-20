@@ -12,7 +12,7 @@ Additionally, the extension comes with a menu button. Just click it and then sel
 4. Enjoy!
 
 ## Development
-1. Prerequisites: [Node.js](https://nodejs.org/en/), [Grunt](http://gruntjs.com), [JSCS](http://jscs.info) and [JSHint](http://jshint.com)
+1. Prerequisites: [Node.js](https://nodejs.org/en/), [TypeScript](https://www.typescriptlang.org), [webpack](https://webpack.github.io) and [TSLint](https://palantir.github.io/tslint/).
 2. Clone the repo
 3. Use "npm install" to install the needed packages
 4. If you want to develop, use "grunt live" to build and then listen for changes in the project files
@@ -24,6 +24,17 @@ Note: you need to use Safari to build the ".safariextz" file. The build command 
 - Suggestions?
 
 ## Changelog
+### Version 2.0.0
+- The whole extension was reimplemented from scratch in TypeScript
+- Much easier way to add a new resource
+- The mechanism behind can now detect way more websites. Just ask for something and i will add support for it.
+- The new mechanism allows button placement in specific place easier now.
+- New image for toolbar. Thanks to [David Hariri](https://github.com/davidhariri)
+- Added support for Twitch.tv and Amazon Videos
+- Button placed before fullscreen button for YouTube and Twitch
+- Fix support for Safari Technology Preview
+- Removed support for DailyMotion (they offer native button now)
+
 ### Version 1.8.2
 - Fix Search mode
 

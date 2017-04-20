@@ -12,7 +12,11 @@ Additionally, the extension comes with a menu button. Just click it and then sel
 4. Enjoy!
 
 ## Development
-1. Prerequisites: [Node.js](https://nodejs.org/en/), [TypeScript](https://www.typescriptlang.org), [webpack](https://webpack.github.io) and [TSLint](https://palantir.github.io/tslint/).
+1. Prerequisites: 
+- [Node.js](https://nodejs.org/en/)
+- [TypeScript](https://www.typescriptlang.org)
+- [webpack](https://webpack.github.io) 
+- [TSLint](https://palantir.github.io/tslint/)
 2. Clone the repo
 3. Use "npm install" to install the needed packages
 4. If you want to develop, use "grunt live" to build and then listen for changes in the project files
@@ -61,7 +65,7 @@ Note: you need to use Safari to build the ".safariextz" file. The build command 
 ### Version 1.6
 - Fixed PiP button not displaying when navigating to a movie from YouTube homepage
 - Added the possibility to bind custom event to trigger the PiP button loading
-- Possible fix for the [https://github.com/bfmatei/PiPTool.safariextension/issues/3](YouTube playlists issues)
+- Possible fix for the [YouTube playlists issues](https://github.com/bfmatei/PiPTool.safariextension/issues/3)
 
 ### Version 1.5
 - Add the possibility to auto-update the extension

@@ -1,6 +1,6 @@
 {
   "name": "piptool",
-  "version": "1.8.2",
+  "version": "2.0.0",
   "description": "Adds the missing Picture-in-Picture functionality to Youtube, Netflix, Plex (Web), Dailymotion",
   "main": "index.js",
   "pipToolConfig": {

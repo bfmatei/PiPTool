@@ -12,5 +12,23 @@
             <key>Type</key>
             <string>TextField</string>
         </dict>
+        <dict>
+            <key>Key</key>
+            <string>embyDomains</string>
+            <key>Secure</key>
+            <false/>
+            <key>Title</key>
+            <string>Additional Emby Domains</string>
+            <key>Type</key>
+            <string>TextField</string>
+        </dict>
+        <dict>
+            <key>Key</key>
+            <string>enableContextMenu</string>
+            <key>Title</key>
+            <string>Contextual Menu</string>
+            <key>Type</key>
+            <string>CheckBox</string>
+        </dict>
     </array>
 </plist>

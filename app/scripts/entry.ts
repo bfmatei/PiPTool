@@ -24,6 +24,9 @@ export class Entry extends Base {
   /** Last targeted element in target mode */
   private lastTargetedElement = null;
 
+  /** Flag for context menu */
+  private enableContextMenu = false;
+
   constructor(private window: Window, private document: Document) {
     super(safari.self, (safari.self as any).tab);
 
@@ -32,8 +35,13 @@ export class Entry extends Base {
   }
 
   public retrieveSettingsResponse(safariSettings: any): void {
-    /** Add the extra Plex domains */
-    this.params.addDomainsToResource("plex", safariSettings);
+    safariSettings = JSON.parse(safariSettings);
+
+    this.enableContextMenu = safariSettings.enableContextMenu;
+
+    Object.keys(safariSettings.domains).forEach((resourceName: string) => {
+      this.params.addDomainsToResource(resourceName, safariSettings[resourceName]);
+    });
 
     /** Search to see if we have any resource available for current hostname */
     this.currentResource = this.params.getResourceByHostname(this.window.location.hostname);
@@ -46,8 +54,7 @@ export class Entry extends Base {
 
   /** Search for video */
   private findVideos(): void {
-    const selector = `${this.currentResource.videoParentSelector}:not([data-pip-added="true"])`;
-    const videoWrappers = this.document.querySelectorAll(selector);
+    const videoWrappers = this.document.querySelectorAll(this.currentResource.videoParentSelector);
 
     for (let index = 0; index < videoWrappers.length; index++) {
       this.insertPipButton(videoWrappers.item(index));
@@ -60,10 +67,7 @@ export class Entry extends Base {
 
     if (this.document.body) {
       this.observer.observe(this.document.body, {
-        childList: true,
-        attributes: true,
-        characterData: true,
-        subtree: true
+        childList: true
       });
     }
   }
@@ -83,7 +87,7 @@ export class Entry extends Base {
     const pipImage = this.createImage();
     const pipButton = this.document.createElement(this.currentResource.elementType);
 
-    pipButton.classList.add("pip-button");
+    pipButton.classList.add(this.params.buttonClass);
 
     this.currentResource.buttonClassList.split(" ")
       .forEach((buttonClass) => pipButton.classList.add(buttonClass));
@@ -109,29 +113,33 @@ export class Entry extends Base {
   private insertPipButton(videoWrapper: Element): void {
     const video = <IHTMLVideoElement> videoWrapper.querySelector(this.currentResource.videoSelector);
     const button = this.createButton(video);
-    const controlsWrapper = videoWrapper.querySelector(this.currentResource.controlsWrapperSelector);
+    const selector = `${this.currentResource.controlsWrapperSelector}:not([data-pip-added="true"])`;
+    const controlsWrappers = videoWrapper.querySelectorAll(selector);
 
-    if (controlsWrapper && 0 === controlsWrapper.querySelectorAll(this.params.buttonClass).length) {
-      switch (this.currentResource.insertType) {
-        case InsertTypes.APPEND:
-          controlsWrapper.appendChild(button);
-          break;
+    for (let index = 0; index < controlsWrappers.length; index++) {
+      const controlWrapper = controlsWrappers.item(index);
 
-        case InsertTypes.BEFORE:
-          controlsWrapper.insertBefore(button, controlsWrapper.querySelector(this.currentResource.insertTarget));
-          break;
+      if (controlsWrappers && 0 === controlWrapper.querySelectorAll(this.params.buttonClass).length) {
+        switch (this.currentResource.insertType) {
+          case InsertTypes.APPEND:
+            controlWrapper.appendChild(button);
+            break;
 
-        case InsertTypes.PREPEND:
-          controlsWrapper.insertBefore(button, controlsWrapper.firstChild);
-          break;
+          case InsertTypes.BEFORE:
+            controlWrapper.insertBefore(button, controlWrapper.querySelector(this.currentResource.insertTarget));
+            break;
 
-        default:
-          console.log("Insert type is not supported");
-      }
+          case InsertTypes.PREPEND:
+            controlWrapper.insertBefore(button, controlWrapper.firstChild);
+            break;
 
-      if (0 < videoWrapper.querySelectorAll(".pip-button").length) {
-        console.dir(videoWrapper);
-        videoWrapper.setAttribute("data-pip-added", "true");
+          default:
+            console.log("Insert type is not supported");
+        }
+
+        if (0 < controlWrapper.querySelectorAll(`.${this.params.buttonClass}`).length) {
+          controlWrapper.setAttribute("data-pip-added", "true");
+        }
       }
     }
   }

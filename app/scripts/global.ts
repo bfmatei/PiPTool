@@ -5,32 +5,45 @@ import { Base } from "./base";
  * Global script responsable with handling settings etc.
  */
 export class Global extends Base {
-  private cachedAdditionalDomains = [];
-
   constructor() {
     super(safari.application, safari.application.activeBrowserWindow.activeTab.page);
 
     super.addEventListener("command", () => super.dispatchMessage(Messages.ENTER_PIP_MODE), false);
   }
 
-  public retrieveSettings(): void {
-    if (!this.cachedAdditionalDomains) {
-      const additionalDomains = safari.extension.settings.getItem("plexDomains") || "";
-
-      this.cachedAdditionalDomains = additionalDomains
+  private parseDomains(domains: string): string {
+    if (null !== domains) {
+      domains = domains
         .replace(/(\s)/g, "") /** Remmove spaces */
         .replace(/^\|+/, "") /** Trim left pipe */
-        .replace(/\|+$/, "") /** Trim right pipe */
-        .split("|") /** Split the domains */
-        .filter((additionalDomain) => {
-          const test1 = /^([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,}$/.test(additionalDomain);
-          const test2 = /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/.test(additionalDomain);
-
-          return test1 || test2;
-        })
-        .join("|");
+        .replace(/\|+$/, ""); /** Trim right pipe */
     }
 
-    super.dispatchMessage(Messages.RETRIEVE_SETTINGS_RESPONSE, this.cachedAdditionalDomains);
+    return domains;
+  }
+
+  public retrieveSettings(): void {
+    const enableContextMenu = safari.extension.settings.getItem("enableContextMenu");
+    const plex = safari.extension.settings.getItem("plexDomains") || null;
+    const emby = safari.extension.settings.getItem("embyDomains") || null;
+
+    if (enableContextMenu) {
+      safari.application.addEventListener("contextmenu", (event: SafariExtensionContextMenuEvent) => {
+        this.contextMenuHandler(event);
+      }, false);
+    }
+
+    super.dispatchMessage(Messages.RETRIEVE_SETTINGS_RESPONSE, JSON.stringify({
+      enableContextMenu,
+      domains: {
+        plex: this.parseDomains(plex),
+        emby: this.parseDomains(emby)
+      }
+    }));
+  }
+
+  /** Handler for right click event */
+  private contextMenuHandler(event: SafariExtensionContextMenuEvent): void {
+    event.contextMenu.appendContextMenuItem("enterPipMode", "Enter PiP Mode", "toggleTargetMode");
   }
 }

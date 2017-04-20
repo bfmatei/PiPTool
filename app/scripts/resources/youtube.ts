@@ -5,7 +5,7 @@ export const YouTube = {
   domains: "youtube.com|www.youtube.com|youtu.be|www.youtu.be",
   elementType: "button",
   videoSelector: "video.html5-main-video",
-  buttonClassList: "ytp-button pip-button",
+  buttonClassList: "ytp-button",
   videoParentSelector: ".html5-video-player",
   controlsWrapperSelector: ".ytp-right-controls",
   insertType: InsertTypes.BEFORE,

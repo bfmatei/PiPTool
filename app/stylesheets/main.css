@@ -3,12 +3,6 @@
     transform: scale(0.7);
 }
 
-.dmp_ControlBarButton.pip-button {
-    -webkit-transform: scale(0.7);
-    transform: scale(0.7);
-    opacity: 0.6;
-}
-
 .btn-link.pip-button:hover,
 .btn-link.pip-button:active {
     opacity: 1;
@@ -47,8 +41,15 @@
     background: none!important;
 }
 
-.twitch-pip:hover img {
-    fill: red;
+.emby-pip {
+    background: none;
+    border: none;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0 0 0 15px;
+    display: block;
+    width: 25px;
+    height: 25px
 }
 
 body:hover > .netflix-pip {

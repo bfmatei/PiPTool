@@ -48,7 +48,7 @@
 	<dict>
 		<key>Scripts</key>
 		<dict>
-			<key>Start</key>
+			<key>End</key>
 			<array>
 				<string>{{entryScriptPath}}</string>
 			</array>

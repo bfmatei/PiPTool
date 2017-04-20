@@ -4,6 +4,7 @@ import { Plex } from "./resources/plex";
 import { YouTube } from "./resources/youtube";
 import { Twitch } from "./resources/twitch";
 import { Netflix } from "./resources/netflix";
+import { Emby } from "./resources/emby";
 
 export class Params {
   private config: IParams = {
@@ -42,22 +43,21 @@ export class Params {
   }
 
   public addDomainsToResource(name: string, domains: string): void {
-    this.config.resources = this.config.resources.map((resource) => {
-      if (resource.resourceName === name && 0 < domains.length) {
-        resource.domains += domains;
-      }
+    const resource = this.getResourceByName(name);
 
-      return resource;
-    });
+    if (resource && domains) {
+      resource.domains += `|${domains}`;
+    }
   }
 
   constructor(defaultConfig: IParams = null) {
     this.loadConfig(defaultConfig);
 
     this.config.buttonTitle = "PiPTool";
-    this.config.buttonClass = ".pip-button";
+    this.config.buttonClass = "pip-button";
     this.config.resources = [
       Plex,
+      Emby,
       YouTube,
       Netflix,
       Twitch
